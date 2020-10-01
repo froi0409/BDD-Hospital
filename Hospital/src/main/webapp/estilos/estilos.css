@@ -7,6 +7,9 @@ and open the template in the editor.
     Created on : 1/10/2020, 01:10:52
     Author     : froi-pc
 */
+body{
+    background: url("../images/fondo.jpg");
+}
 
 .fondoInicio{
     background: #51adcf;
