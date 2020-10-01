@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : froi-pc
 */
 body{
-    background: url("../images/fondo.jpg");
+    background: url("../images/fondo.jpg") no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .fondoInicio{

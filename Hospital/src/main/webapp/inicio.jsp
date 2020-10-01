@@ -15,7 +15,7 @@
                 <form action="registro.jsp" method="POST" class="form">
                     <button type="submit" class="btn btn-warning form">Registrarse</button>
                 </form>
-                <form action="inicioSesion.jsp" method="POST" class="form">
+                <form action="inicio-sesion.jsp" method="POST" class="form">
                     <button type="submit" class="btn btn-outline-warning form">Iniciar Sesión</button>
                 </form>
             </div>
