@@ -1,0 +1,28 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1/10/2020, 01:10:52
+    Author     : froi-pc
+*/
+body{
+    background: url("../images/fondo.jpg") no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.fondoInicio{
+    background: #51adcf;
+    color: white;
+    height: 100px;
+}
+.barraHerramientas{
+    background: skyblue;
+    color: white;
+    height: 75px;
+}
+.form{
+    display: inline;
+}
