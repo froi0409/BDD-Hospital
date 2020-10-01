@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@page import="analizadores.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,14 @@
             </div>
 
         </div>
+        
+        <%
+        
+            if(Conexion.getConnection()!=null){
+                out.println("SIUU");
+            }
+
+        %>
         
         <div class="container">
             <div class="row justify-content-center pt-5 mt-5 mr-1">

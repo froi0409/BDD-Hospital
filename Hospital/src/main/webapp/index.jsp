@@ -5,18 +5,22 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import = "analizadores.*"%>
+<% 
+
+    Conexion conexionBD = new Conexion();
+    conexionBD.crearConexion();
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file = "links.html"%>
-        <title>Hospital</title>
+        <title>Index</title>
         
     </head>
     <body>
-        
-        <%@include file = "inicio.jsp"%>
-        
-        <%@include file = "scripts.html"%>
+        <!<!-- La siguiente instrucción nos dirige a la página de inicio -->
+        <% response.sendRedirect("inicio.jsp"); %>
     </body>
 </html>
