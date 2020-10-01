@@ -4,7 +4,7 @@
     Author     : froi-pc
 --%>
 
-<%@page import="analizadores.Conexion"%>
+<%@page import="analizadores.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,12 +36,17 @@
         </div>
         
         <%
-        
-            if(Conexion.getConnection()!=null){
-                out.println("SIUU");
-            }
-
-        %>
+            AnalizadorDeDatos analizador = new AnalizadorDeDatos();
+            if(!analizador.baseLlena(Conexion.getConnection())){ %>
+                <br><br>
+            
+                <div class="container">
+                    <div class="alert alert-warning" role="alert" align="center">
+                        SISTEMA VACIO, FAVOR CONTACTAR AL ADMINISTRADOR
+                    </div>
+                </div>
+                
+            <%}%>
         
         <div class="container">
             <div class="row justify-content-center pt-5 mt-5 mr-1">

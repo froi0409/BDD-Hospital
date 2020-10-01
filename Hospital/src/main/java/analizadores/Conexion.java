@@ -23,9 +23,10 @@ public class Conexion {
     /**
      * Método que nos sirve para crear la conexión de la base de datos
      */
-    public void crearConexion(){
+    public void crearConexion() throws ClassNotFoundException{
         try {
-            connection = DriverManager.getConnection(url,user,password);
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, password);
             System.out.println("CONEXIÓN CREADA");
         } catch (SQLException e) {
             System.out.println("ERROR AL CREAR LA CONEXIÓN");
