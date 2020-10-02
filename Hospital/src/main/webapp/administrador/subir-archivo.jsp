@@ -1,6 +1,6 @@
 <%-- 
-    Document   : inicio
-    Created on : 30/09/2020, 22:34:44
+    Document   : subir-archivo
+    Created on : 2/10/2020, 01:03:44
     Author     : froi-pc
 --%>
 
@@ -9,16 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file = "links.html"%>
-        <title>Hospital</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../estilos/estilos.css" rel="stylesheet" type="text/css"/>
+        <title>Subir Registros</title>
     </head>
     <body>
         
         <div class="container-fluid">
-
-            <!-- Añadimos la fila que será la cabecera de la página -->
+            
             <div class="row fondoInicio align-items-center">
-
+                
                 <div class="col-3" align="left">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/logo.png" height="75px"/>
                 </div>
@@ -27,19 +27,15 @@
                 </div>
                 <div class="col-3" align="right">
                     &nbsp;&nbsp;
-                    <form action="registro.jsp" method="POST" class="form">
-                        <button type="submit" class="btn btn-light form">Registrarse</button>
-                    </form>
-                    <form action="inicio-sesion.jsp" method="POST" class="form">
-                        <button type="submit" class="btn btn-outline-light form">Iniciar Sesión</button>
-                    </form>
+                    <h2>Subir Registros</h2>
                 </div>
-
+                
             </div>
-
-
+            
         </div>
-
-        <%@include file = "scripts.html"%>
+        
+        <script src="../js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
     </body>
 </html>
