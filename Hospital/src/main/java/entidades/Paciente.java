@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class Paciente {
+public class Paciente extends Entidad{
     
     private String dpi;
     private String nombre;

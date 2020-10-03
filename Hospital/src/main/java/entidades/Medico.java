@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class Medico {
+public class Medico extends Entidad{
     
     private String codigo;
     private String password;

@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class Resultado {
+public class Resultado extends Entidad{
     
     private String codigo;
     private String fecha;

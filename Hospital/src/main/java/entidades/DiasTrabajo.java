@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class DiasTrabajo {
+public class DiasTrabajo extends Entidad{
     
     private String codigo;
     private boolean lunes;

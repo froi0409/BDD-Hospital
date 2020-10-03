@@ -5,7 +5,9 @@
  */
 package archivos;
 
+import entidades.Estructura;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -21,7 +23,10 @@ import org.w3c.dom.NodeList;
  */
 public class Lector {
     
+    private ArrayList<Estructura> atributos = new ArrayList<Estructura>();
+    
     public void leerTag(String path, String tagName){
+        
         try {
             
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -46,6 +51,7 @@ public class Lector {
                         if(hijo.getNodeType() == Node.ELEMENT_NODE){
                             
                             System.out.println("Propiedad: " + hijo.getNodeName() + "     Valor: " + hijo.getTextContent());
+                            atributos.add(new Estructura(hijo.getNodeName(),hijo.getTextContent()));
                             
                         }
                         
@@ -62,5 +68,10 @@ public class Lector {
         }
             
     }
+
+    public ArrayList<Estructura> getAtributos() {
+        return atributos;
+    }
+    
     
 }

@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class Administrador {
+public class Administrador extends Entidad{
     
     private String codigo;
     private String dpi;

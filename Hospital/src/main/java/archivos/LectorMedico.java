@@ -5,6 +5,9 @@
  */
 package archivos;
 
+import entidades.Entidad;
+import java.util.ArrayList;
+
 /**
  *
  * @author froi-pc
@@ -19,6 +22,11 @@ public class LectorMedico extends LectorArchivo{
     public void readme() {
         Lector lector = new Lector();
         lector.leerTag(getPath(), getTagName());
+    }
+
+    @Override
+    public void convertToObject(Entidad entd, ArrayList al) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

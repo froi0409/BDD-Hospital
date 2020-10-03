@@ -9,7 +9,7 @@ package entidades;
  *
  * @author froi-pc
  */
-public class CitaMedica {
+public class CitaMedica extends Entidad{
     
     private String codigo;
     private String fecha;
