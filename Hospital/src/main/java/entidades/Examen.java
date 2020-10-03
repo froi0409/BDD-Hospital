@@ -15,7 +15,7 @@ public class Examen extends Entidad{
     private String nombre;
     private boolean orden;
     private String descripcion;
-    private boolean costo;
+    private double costo;
     private String informe;
 
     public String getCodigo() {
@@ -50,11 +50,11 @@ public class Examen extends Entidad{
         this.descripcion = descripcion;
     }
 
-    public boolean isCosto() {
+    public double isCosto() {
         return costo;
     }
 
-    public void setCosto(boolean costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
 

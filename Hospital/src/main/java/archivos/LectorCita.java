@@ -5,7 +5,7 @@
  */
 package archivos;
 
-import entidades.Entidad;
+import entidades.CitaMedica;
 import entidades.Estructura;
 import java.util.ArrayList;
 
@@ -15,14 +15,31 @@ import java.util.ArrayList;
  */
 public class LectorCita extends LectorArchivo {
 
+    private CitaMedica cita;
+    
     public LectorCita() {
+        cita = new CitaMedica();
     }
 
-
-
     @Override
-    public void convertToEntidad(ArrayList<Estructura> al) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void convertToEntidad(ArrayList<Estructura> atributos) {
+        
+        for(Estructura element: atributos){
+            
+            if (element.getTipo().equals("CODIGO")){
+                this.cita.setCodigo(element.getDescripcion());
+            } else if (element.getTipo().equals("PACIENTE")) {
+                this.cita.setDpiPaciente(element.getDescripcion());
+            } else if (element.getTipo().equals("MEDICO")) {
+                this.cita.setCodigoMedico(element.getDescripcion());
+            } else if (element.getTipo().equals("FECHA")) {
+                this.cita.setFecha(element.getDescripcion());
+            } else if (element.getTipo().equals("HORA")) {
+                this.cita.setHora(element.getDescripcion());
+            }
+            
+        }
+        
     }
     
 }

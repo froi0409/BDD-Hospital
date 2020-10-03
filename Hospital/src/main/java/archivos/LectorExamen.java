@@ -5,8 +5,8 @@
  */
 package archivos;
 
-import entidades.Entidad;
 import entidades.Estructura;
+import entidades.Examen;
 import java.util.ArrayList;
 
 /**
@@ -15,12 +15,33 @@ import java.util.ArrayList;
  */
 public class LectorExamen extends LectorArchivo{
 
+    private Examen examen;
+    
     public LectorExamen() {
+        examen = new Examen();
     }
 
     @Override
-    public void convertToEntidad(ArrayList<Estructura> al) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void convertToEntidad(ArrayList<Estructura> atributos) {
+        
+        for (Estructura element : atributos){
+            
+            if(element.getTipo().equals("CODIGO")){
+                this.examen.setCodigo(element.getDescripcion());
+            } else if (element.getTipo().equals("NOMBRE")){
+                this.examen.setCodigo(element.getDescripcion());
+            } else if (element.getTipo().equals("ORDEN")) {
+                this.examen.setOrden(Boolean.parseBoolean(element.getDescripcion().toLowerCase()));
+            } else if (element.getTipo().equals("DESCRIPCION")){
+                this.examen.setDescripcion(element.getDescripcion());
+            } else if (element.getTipo().equals("COSTO")){
+                this.examen.setCosto(Double.parseDouble(element.getDescripcion()));
+            } else if (element.getTipo().equals("INFORME")){
+                this.examen.setInforme(element.getDescripcion());
+            }
+            
+        }
+        
     }
     
 }
