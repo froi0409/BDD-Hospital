@@ -26,3 +26,9 @@ body{
 .form{
     display: inline;
 }
+.fileBtn{
+    padding: 5px 10px;
+    background: #f55d3e;
+    color:#fff;
+    border:0px solid #fff;
+}

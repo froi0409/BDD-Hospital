@@ -5,7 +5,6 @@
  */
 package archivos;
 
-import analizadores.Etiqueta;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -42,28 +41,7 @@ public class LectorArchivo {
     }
     
     public void leerEntrada(){
-        try {
-            String linea;
-            ArrayList<Etiqueta> grupoLineas = new ArrayList<Etiqueta>(); //grupo de etiquetas que será enviado a la clase que lo leera
-            BufferedReader reader = new BufferedReader(new FileReader(ruta)); //declaramos el lector del archivo
-            
-            boolean startBlock = false; //servirá para identificar el inicio de un bloque
-            boolean endBlock = false; //servirá para identificar el dinal de un bloque
-            
-            do{
-                linea = reader.readLine();
-                
-                if(linea != null){ //Evita que el documento termine en la linea final
-                    
-                    grupoLineas.add(new Etiqueta(linea));
-                    
-                }
-                
-            }while(linea != null);
-            
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        
     }
     
 }
