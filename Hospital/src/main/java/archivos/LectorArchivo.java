@@ -5,19 +5,22 @@
  */
 package archivos;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  *
  * @author froi-pc
  */
-public class LectorArchivo {
+public abstract class LectorArchivo {
     
-    public LectorArchivo(){
-        
+    private String path;
+    private String tagName;
+    
+    public LectorArchivo(String path, String tagName){
+        this.path = path;
+        this.tagName = tagName;
     }
+    
+    public abstract void readme(String tagName);
+    
     
 }

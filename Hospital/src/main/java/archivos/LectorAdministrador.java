@@ -9,8 +9,15 @@ package archivos;
  *
  * @author froi-pc
  */
-public class LectorAdministrador extends LectorArchivo {
-    public LectorAdministrador(){
+public class LectorAdministrador extends LectorArchivo{
+    
+    public LectorAdministrador(String path, String tagName){
+        super(path, tagName);
+    }
+
+    @Override
+    public void readme(String tagName) {
         
     }
+
 }

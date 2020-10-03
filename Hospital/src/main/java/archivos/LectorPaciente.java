@@ -9,6 +9,15 @@ package archivos;
  *
  * @author froi-pc
  */
-public class LectorPaciente {
+public class LectorPaciente extends LectorArchivo{
+
+    public LectorPaciente(String path, String tagName) {
+        super(path, tagName);
+    }
+
+    @Override
+    public void readme(String tagName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

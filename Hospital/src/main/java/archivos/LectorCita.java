@@ -9,6 +9,15 @@ package archivos;
  *
  * @author froi-pc
  */
-public class LectorCita {
+public class LectorCita extends LectorArchivo {
+
+    public LectorCita(String path, String tagName) {
+        super(path, tagName);
+    }
+
+    @Override
+    public void readme(String tagName) {
+        
+    }
     
 }
