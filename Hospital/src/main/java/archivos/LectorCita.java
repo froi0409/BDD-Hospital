@@ -17,7 +17,8 @@ public class LectorCita extends LectorArchivo {
 
     @Override
     public void readme() {
-        
+        Lector lector = new Lector();
+        lector.leerTag(getPath(), getTagName());
     }
     
 }

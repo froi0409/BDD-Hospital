@@ -28,6 +28,30 @@ public class LectorXml {
             LectorAdministrador administrador = new LectorAdministrador(path, "admin");
             administrador.readme();
             
+            LectorMedico doctor = new LectorMedico(path, "doctor");
+            doctor.readme();
+            
+            LectorLaboratorista laboratorista = new LectorLaboratorista(path, "laboratorista");
+            laboratorista.readme();
+            
+            LectorPaciente paciente = new LectorPaciente(path, "paciente");
+            paciente.readme();
+            
+            LectorExamen examen = new LectorExamen(path, "examen");
+            examen.readme();
+            
+            LectorInforme informe = new LectorInforme(path, "reporte");
+            informe.readme();
+            
+            LectorResultado resultado = new LectorResultado(path, "resultado");
+            resultado.readme();
+            
+            LectorCita cita = new LectorCita(path, "cita");
+            cita.readme();
+            
+            LectorConsulta consulta = new LectorConsulta(path, "consulta");
+            consulta.readme();
+            
         } catch (Exception ex) {
             Logger.getLogger(LectorXml.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -9,9 +9,9 @@ package archivos;
  *
  * @author froi-pc
  */
-public class LectorPaciente extends LectorArchivo{
+public class LectorExamen extends LectorArchivo{
 
-    public LectorPaciente(String path, String tagName) {
+    public LectorExamen(String path, String tagName) {
         super(path, tagName);
     }
 
