@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "links.html"%>
-        <link href="../estilos/login.css" rel="stylesheet" type="text/css"/>
+        <link href="estilos/login.css" rel="stylesheet" type="text/css"/>
         <title>Iniciar Sesión</title>
     </head>
     
@@ -23,7 +23,7 @@
             <div class="row fondoInicio align-items-center">
 
                 <div class="col-3" align="left">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../images/logo.png" height="75px"/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/logo.png" height="75px"/>
                 </div>
                 <div class="col-6" align="center">
                     <h1>HOSPITAL DE ANFIELD</h1>
@@ -51,7 +51,7 @@
             <%}%>
             
         <!-- Creamos la ventana del login -->
-        <form action="../AnalizadorDatosLogin" method="POST">
+        <form action="AnalizadorDatosLogin" method="POST">
             <div class="container"> 
                 <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-4 formulario">

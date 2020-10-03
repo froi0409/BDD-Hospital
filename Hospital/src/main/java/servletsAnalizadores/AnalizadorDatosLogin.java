@@ -68,8 +68,8 @@ public class AnalizadorDatosLogin extends HttpServlet {
         
         //condición que nos permite saber si la base de datos está vacía y si los datos ingresados en el formulario son los del creador de la base de datos
         if(!analizador.baseLlena(Conexion.getConnection()) && request.getParameter("user").equals(con.getUser()) && request.getParameter("password").equals(con.getPassword())){
-            //request.getRequestDispatcher("/administrador/subir-archivo.jsp").forward(request, response);
-            response.sendRedirect("administrador/subir-archivo.jsp");
+            request.getRequestDispatcher("/subir-archivo.jsp").forward(request, response);
+            //response.sendRedirect("/subir-archivo.jsp");
         } else if (!analizador.baseLlena(Conexion.getConnection())) {
             
         }

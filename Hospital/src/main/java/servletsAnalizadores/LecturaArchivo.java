@@ -33,8 +33,11 @@ public class LecturaArchivo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String path;
        ArchivoDeEntrada lector = new ArchivoDeEntrada(request,"ruta"); //Enviamos al constructor la propiedad request
+       path = lector.getPath();//obtenemos el path del archivo en el servidor
+       
+       
        
     }
 

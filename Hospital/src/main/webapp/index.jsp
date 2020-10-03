@@ -21,6 +21,6 @@
     </head>
     <body>
         <!<!-- La siguiente instrucción nos dirige a la página de inicio -->
-        <% response.sendRedirect("paginasIniciales/inicio.jsp"); %>
+        <% response.sendRedirect("inicio.jsp"); %>
     </body>
 </html>

@@ -5,19 +5,10 @@
  */
 package archivos;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-
 /**
  *
  * @author froi-pc
  */
-public class LectorArchivo {
-    
-    public LectorArchivo(){
-        
-    }
+public class LectorMedico {
     
 }
