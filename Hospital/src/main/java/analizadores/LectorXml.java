@@ -5,6 +5,7 @@
  */
 package analizadores;
 
+import archivos.*;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,11 +25,8 @@ public class LectorXml {
     public void read(String path){
         try {
             
-            
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document documento = db.parse(new File(path));
-            NodeList lsitaDoctores = documento.getElementsByTagName("coche");
+            LectorAdministrador administrador = new LectorAdministrador(path, "admin");
+            administrador.readme();
             
         } catch (Exception ex) {
             Logger.getLogger(LectorXml.class.getName()).log(Level.SEVERE, null, ex);

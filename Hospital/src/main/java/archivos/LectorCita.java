@@ -16,7 +16,7 @@ public class LectorCita extends LectorArchivo {
     }
 
     @Override
-    public void readme(String tagName) {
+    public void readme() {
         
     }
     

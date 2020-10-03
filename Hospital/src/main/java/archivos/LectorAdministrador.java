@@ -16,8 +16,9 @@ public class LectorAdministrador extends LectorArchivo{
     }
 
     @Override
-    public void readme(String tagName) {
-        
+    public void readme() {
+        Lector lector = new Lector();
+        lector.leerTag(getPath(), getTagName());
     }
 
 }

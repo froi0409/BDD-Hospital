@@ -20,7 +20,13 @@ public abstract class LectorArchivo {
         this.tagName = tagName;
     }
     
-    public abstract void readme(String tagName);
+    public abstract void readme();
     
+    public String getPath(){
+        return path;
+    }
     
+    public String getTagName(){
+        return tagName;
+    }
 }

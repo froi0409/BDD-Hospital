@@ -16,7 +16,7 @@ public class LectorResultado extends LectorArchivo{
     }
 
     @Override
-    public void readme(String tagName) {
+    public void readme() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
