@@ -5,8 +5,11 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.Administrador;
 import entidades.Entidad;
+import entidades.Estructura;
+import ingresos.IngresoAdministrador;
 import java.util.ArrayList;
 
 /**
@@ -16,24 +19,36 @@ import java.util.ArrayList;
 public class LectorAdministrador extends LectorArchivo{
     
     private Administrador administrador;
+
     
-    public LectorAdministrador(String path, String tagName){
-        super(path, tagName);
-    }
-
-    @Override
-    public void readme() {
-        Lector lector = new Lector();
-        lector.leerTag(getPath(), getTagName());
-        setAtributos(lector.getAtributos());
-        
+    public LectorAdministrador(){
         administrador = new Administrador();
-        
     }
 
     @Override
-    public void convertToObject(Entidad entidad, ArrayList atributos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void convertToEntidad(ArrayList<Estructura> atributos) {
+        
+        for(Estructura element: atributos){
+            
+            if(element.getTipo().equals("CODIGO")){
+                this.administrador.setCodigo(element.getDescripcion());
+            } else if(element.getTipo().equals("DPI")) {
+                this.administrador.setDpi(element.getDescripcion());
+            } else if(element.getTipo().equals("NOMBRE")) {
+                this.administrador.setNombre(element.getDescripcion());
+            } else if(element.getTipo().equals("PASSWORD")) {
+                this.administrador.setPassword(element.getDescripcion());
+            }
+            
+        }
+        
+        IngresoAdministrador ingresador = new IngresoAdministrador(this.administrador);
+        ingresador.ingresoArchivo(Conexion.getConnection());
+        
+    }
+    
+    public Administrador getAdministrador() {
+        return administrador;
     }
     
 }

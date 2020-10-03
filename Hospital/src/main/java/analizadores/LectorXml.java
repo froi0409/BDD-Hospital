@@ -6,15 +6,9 @@
 package analizadores;
 
 import archivos.*;
-import java.io.File;
+import entidades.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 /**
  *
@@ -25,36 +19,40 @@ public class LectorXml {
     public void read(String path){
         try {
             
-            LectorAdministrador administrador = new LectorAdministrador(path, "admin");
-            administrador.readme();
+            Lector lector = new Lector();
             
-            LectorMedico doctor = new LectorMedico(path, "doctor");
-            doctor.readme();
+            Administrador administrador = new Administrador();
+            LectorAdministrador lecAdministrador = new LectorAdministrador();
+            lector.leerTag(path, "admin", lecAdministrador, administrador);
             
-            LectorLaboratorista laboratorista = new LectorLaboratorista(path, "laboratorista");
-            laboratorista.readme();
+            Medico medico = new Medico();
+            LectorMedico lecMedico = new LectorMedico();
+            lector.leerTag(path, "doctor", lecMedico, medico);
             
-            LectorPaciente paciente = new LectorPaciente(path, "paciente");
-            paciente.readme();
+            Laboratorista laboratorista = new Laboratorista();
+            LectorLaboratorista lecLaboratorista = new LectorLaboratorista();
+            lector.leerTag(path, "laboratorista", lecLaboratorista, laboratorista);
             
-            LectorExamen examen = new LectorExamen(path, "examen");
-            examen.readme();
+            Paciente paciente = new Paciente();
+            LectorPaciente lecPaciente = new LectorPaciente();
+            lector.leerTag(path, "paciente", lecPaciente, paciente);
             
-            LectorInforme informe = new LectorInforme(path, "reporte");
-            informe.readme();
             
-            LectorResultado resultado = new LectorResultado(path, "resultado");
-            resultado.readme();
+            LectorExamen examen = new LectorExamen();
             
-            LectorCita cita = new LectorCita(path, "cita");
-            cita.readme();
+            LectorInforme informe = new LectorInforme();
             
-            LectorConsulta consulta = new LectorConsulta(path, "consulta");
-            consulta.readme();
+            LectorResultado resultado = new LectorResultado();
+            
+            LectorCita cita = new LectorCita();
+            
+            LectorConsulta consulta = new LectorConsulta();
             
         } catch (Exception ex) {
             Logger.getLogger(LectorXml.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
     
 }

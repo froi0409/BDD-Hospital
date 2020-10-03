@@ -6,6 +6,7 @@
 package archivos;
 
 import entidades.Entidad;
+import entidades.Estructura;
 import java.util.ArrayList;
 
 /**
@@ -14,20 +15,11 @@ import java.util.ArrayList;
  */
 public class LectorLaboratorista extends LectorArchivo{
 
-    public LectorLaboratorista(String path, String tagName) {
-        super(path, tagName);
+    public LectorLaboratorista() {
     }
 
     @Override
-    public void readme() {
-        Lector lector = new Lector();
-        lector.leerTag(getPath(), getTagName());
-        setAtributos(lector.getAtributos());
-        setAtributos(lector.getAtributos());
-    }
-
-    @Override
-    public void convertToObject(Entidad entd, ArrayList al) {
+    public void convertToEntidad(ArrayList<Estructura> al) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

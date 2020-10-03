@@ -5,6 +5,7 @@
  */
 package archivos;
 
+import entidades.Entidad;
 import entidades.Estructura;
 import java.io.File;
 import java.util.ArrayList;
@@ -24,8 +25,9 @@ import org.w3c.dom.NodeList;
 public class Lector {
     
     private ArrayList<Estructura> atributos = new ArrayList<Estructura>();
+    private int cont = 0;
     
-    public void leerTag(String path, String tagName){
+    public void leerTag(String path, String tagName, LectorArchivo lector, Entidad entidad){
         
         try {
             
@@ -58,6 +60,7 @@ public class Lector {
                     }
                     
                     System.out.println("");
+                    lector.convertToEntidad(atributos);
                     
                 }
                 

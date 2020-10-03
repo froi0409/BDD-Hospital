@@ -20,15 +20,12 @@ public abstract class LectorArchivo {
     private String tagName;
     private ArrayList<Estructura> atributos;
     
-    public LectorArchivo(String path, String tagName){
-        this.path = path;
-        this.tagName = tagName;
+    public LectorArchivo(){
+        
         atributos = new ArrayList<Estructura>();
     }
     
-    public abstract void readme();
-    
-    public abstract void convertToObject(Entidad entidad, ArrayList atributos);
+    public abstract void convertToEntidad(ArrayList<Estructura> atributos);
     
     public String getPath(){
         return path;

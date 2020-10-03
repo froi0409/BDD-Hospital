@@ -5,11 +5,21 @@
  */
 package entidades;
 
+import analizadores.AnalizarContraseña;
+
 /**
  *
  * @author froi-pc
  */
 public class Administrador extends Entidad{
+    
+    public static final String NOMBRE_TABLA = "ADMINISTRADOR";
+    public static final String CODIGO = "codigo";
+    public static final String INFORME = "informe";
+    public static final String FECHA = "fecha";
+    public static final String HORA = "hora";
+    public static final String CODIGO_MEDICO = "codigo_medico";
+    public static final String DPI_PACIENTE = "DPI_paciente";
     
     private String codigo;
     private String dpi;
@@ -45,7 +55,8 @@ public class Administrador extends Entidad{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        AnalizarContraseña encriptador = new AnalizarContraseña();
+        this.password = encriptador.encriptar(password);
     }
     
 }
