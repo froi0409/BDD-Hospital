@@ -5,7 +5,6 @@
  */
 package archivos;
 
-import entidades.Entidad;
 import entidades.Especialidad;
 import entidades.Estructura;
 import entidades.Medico;
@@ -43,7 +42,7 @@ public class LectorMedico extends LectorArchivo{
             } else if (element.getTipo().equals("CORREO")) {
                 medico.setCorreo(element.getDescripcion());
             } else if (element.getTipo().equals("HORARIO")) {
-                
+                setHorario(element);
             } else if (element.getTipo().equals("TRABAJO")) {
                 medico.setFecha(element.getDescripcion());
             } else if (element.getTipo().equals("PASSWORD")) {
@@ -70,6 +69,33 @@ public class LectorMedico extends LectorArchivo{
                 especialidad.setNombre(estruct.getDescripcion().substring(start, i));
                 
                 medico.getEspecialidades().add(especialidad);
+                start = i + 1;
+                
+            }
+            
+        }
+        
+    }
+    
+    private void setHorario(Estructura estruct){
+        
+        int start = 1;
+        int cont = 0;
+        
+        for (int i = 1; i < estruct.getDescripcion().length(); i++){
+            
+            if(estruct.getDescripcion().charAt(i) == ' '){
+                start++;
+            }
+            
+            if(estruct.getDescripcion().charAt(i) == '\n'){
+                
+                if(cont == 0){
+                    medico.setHorarioInicio(estruct.getDescripcion().substring(start, i));
+                } else {
+                    medico.setHorarioFin(estruct.getDescripcion().substring(start, i));
+                }
+                
                 start = i + 1;
                 
             }

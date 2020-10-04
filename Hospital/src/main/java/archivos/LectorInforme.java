@@ -5,8 +5,10 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.Estructura;
 import entidades.Informe;
+import ingresos.IngresoInforme;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,7 @@ public class LectorInforme extends LectorArchivo{
             if(element.getTipo().equals("CODIGO")) {
                 informe.setCodigo(element.getDescripcion());
             } else if (element.getTipo().equals("PACIENTE")) {
-                informe.setDpiPaciente(element.getDescripcion());
+                informe.setCodigoPaciente(element.getDescripcion());
             } else if (element.getTipo().equals("MEDICO")) {
                 informe.setCodigoMedico(element.getDescripcion());
             } else if (element.getTipo().equals("INFORME")) {
@@ -41,6 +43,9 @@ public class LectorInforme extends LectorArchivo{
             }
             
         }
+        
+        IngresoInforme ingresador = new IngresoInforme(informe);
+        ingresador.ingresoArchivo(Conexion.getConnection());
         
     }
     

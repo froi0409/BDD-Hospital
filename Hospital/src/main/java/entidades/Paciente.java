@@ -5,12 +5,27 @@
  */
 package entidades;
 
+import analizadores.AnalizarContraseña;
+
 /**
  *
  * @author froi-pc
  */
 public class Paciente extends Entidad{
     
+    public static final String NOMBRE_TABLA = "PACIENTE";
+    public static final String CODIGO = "codigo";
+    public static final String DPI = "DPI";
+    public static final String NOMBRE = "nombre";
+    public static final String SEXO = "sexo";
+    public static final String FECHA_NACIMIENTO = "fecha_nacimiento";
+    public static final String TIPO_SANGRE = "tipo_sangre";
+    public static final String TELEFONO = "telefono";
+    public static final String PESO = "peso";
+    public static final String CORREO = "correo";
+    public static final String PASSWORD = "password";
+    
+    private String codigo;
     private String dpi;
     private String nombre;
     private String sexo;
@@ -20,6 +35,14 @@ public class Paciente extends Entidad{
     private double peso;
     private String correo;
     private String password;
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
     public String getDpi() {
         return dpi;
@@ -90,7 +113,8 @@ public class Paciente extends Entidad{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        AnalizarContraseña encriptador = new AnalizarContraseña();
+        this.password = encriptador.encriptar(password);
     }
     
 }

@@ -11,6 +11,14 @@ package entidades;
  */
 public class Examen extends Entidad{
     
+    public static final String NOMBRE_TABLA = "EXAMEN";
+    public static final String CODIGO = "codigo";
+    public static final String NOMBRE = "nombre";
+    public static final String ORDEN = "orden";
+    public static final String DESCRIPCION = "descripcion";
+    public static final String COSTO = "costo";
+    public static final String INFORME = "informe";
+    
     private String codigo;
     private String nombre;
     private boolean orden;
@@ -50,14 +58,14 @@ public class Examen extends Entidad{
         this.descripcion = descripcion;
     }
 
-    public double isCosto() {
+    public double getCosto() {
         return costo;
     }
 
     public void setCosto(double costo) {
         this.costo = costo;
     }
-
+    
     public String getInforme() {
         return informe;
     }

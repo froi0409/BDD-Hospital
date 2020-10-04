@@ -5,8 +5,10 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.CitaMedica;
 import entidades.Estructura;
+import ingresos.IngresoCitaMedica;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,7 @@ public class LectorCita extends LectorArchivo {
             if (element.getTipo().equals("CODIGO")){
                 this.cita.setCodigo(element.getDescripcion());
             } else if (element.getTipo().equals("PACIENTE")) {
-                this.cita.setDpiPaciente(element.getDescripcion());
+                this.cita.setCodigoPaciente(element.getDescripcion());
             } else if (element.getTipo().equals("MEDICO")) {
                 this.cita.setCodigoMedico(element.getDescripcion());
             } else if (element.getTipo().equals("FECHA")) {
@@ -39,6 +41,9 @@ public class LectorCita extends LectorArchivo {
             }
             
         }
+        
+        IngresoCitaMedica ingresador = new IngresoCitaMedica(cita);
+        ingresador.ingresoArchivo(Conexion.getConnection());
         
     }
     

@@ -11,6 +11,10 @@ package entidades;
  */
 public class Especialidad extends Entidad{
     
+    public static final String NOMBRE_TABLA = "ESPECIALIDAD";
+    public static final String NOMBRE = "nombre";
+    public static final String COSTO = "costo";
+    
     private String nombre;
     private double costo;
 

@@ -5,6 +5,7 @@
  */
 package entidades;
 
+import analizadores.AnalizarContraseña;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +39,8 @@ public class Medico extends Entidad{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        AnalizarContraseña encriptador = new AnalizarContraseña();
+        this.password = encriptador.encriptar(password);
     }
 
     public String getNombre() {

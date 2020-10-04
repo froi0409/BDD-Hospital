@@ -16,7 +16,7 @@ public class CitaLaboratorio extends Entidad{
     private String hora;
     private double costo;
     private String codigoMedico;
-    private String dpiPaciente;
+    private String codigoPaciente;
     private String codigoExamen;
 
     public String getCodigo() {
@@ -59,14 +59,14 @@ public class CitaLaboratorio extends Entidad{
         this.codigoMedico = codigoMedico;
     }
 
-    public String getDpiPaciente() {
-        return dpiPaciente;
+    public String getCodigoPaciente() {
+        return codigoPaciente;
     }
 
-    public void setDpiPaciente(String dpiPaciente) {
-        this.dpiPaciente = dpiPaciente;
+    public void setCodigoPaciente(String codigoPaciente) {
+        this.codigoPaciente = codigoPaciente;
     }
-
+    
     public String getCodigoExamen() {
         return codigoExamen;
     }

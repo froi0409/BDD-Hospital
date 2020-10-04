@@ -11,12 +11,20 @@ package entidades;
  */
 public class Informe extends Entidad{
     
+    public static final String NOMBRE_TABLA = "INFORME";
+    public static final String CODIGO = "codigo";
+    public static final String INFORME = "informe";
+    public static final String FECHA = "fecha";
+    public static final String HORA = "hora";
+    public static final String CODIGO_MEDICO = "codigo_medico";
+    public static final String CODIGO_PACIENTE = "codigo_paciente";
+    
     private String codigo;
     private String informe;
     private String fecha;
     private String hora;
     private String codigoMedico;
-    private String dpiPaciente;
+    private String codigoPaciente;
 
     public String getCodigo() {
         return codigo;
@@ -58,12 +66,12 @@ public class Informe extends Entidad{
         this.codigoMedico = codigoMedico;
     }
 
-    public String getDpiPaciente() {
-        return dpiPaciente;
+    public String getCodigoPaciente() {
+        return codigoPaciente;
     }
 
-    public void setDpiPaciente(String dpiPaciente) {
-        this.dpiPaciente = dpiPaciente;
+    public void setCodigoPaciente(String codigoPaciente) {
+        this.codigoPaciente = codigoPaciente;
     }
     
 }

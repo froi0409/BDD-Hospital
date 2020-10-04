@@ -5,8 +5,10 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.Especialidad;
 import entidades.Estructura;
+import ingresos.IngresoConsulta;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +35,9 @@ public class LectorConsulta extends LectorArchivo{
             }
             
         }
+        
+        IngresoConsulta ingresador = new IngresoConsulta(especialidad);
+        ingresador.ingresoArchivo(Conexion.getConnection());
         
     }
     
