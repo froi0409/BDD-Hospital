@@ -36,10 +36,20 @@
 
         </div>
         
+        <!-- Creamos botón de regreso -->
+        <div class="container">
+            
+            <form action="inicio.jsp" method="POST">
+                <input type="submit" class="btn btn-outline-primary" value="Regresar" />
+            </form>
+            
+        </div>
+        
         <!-- mostramos mensaje si la base de datos está vacia -->
         <%
             AnalizadorDeDatos analizador = new AnalizadorDeDatos();
-            if(!analizador.baseLlena(Conexion.getConnection())){ %>
+            try{
+                if(!analizador.baseLlena(Conexion.getConnection())){ %>
                 <br><br>
             
                 <div class="container">
@@ -48,7 +58,7 @@
                     </div>
                 </div>
                 
-            <%}%>
+            <%} }catch(Exception e) {}%>
             
         <!-- Creamos la ventana del login -->
         <form action="AnalizadorDatosLogin" method="POST">
