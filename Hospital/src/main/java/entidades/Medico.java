@@ -14,6 +14,18 @@ import java.util.ArrayList;
  */
 public class Medico extends Entidad{
     
+    public static final String NOMBRE_TABLA = "MEDICO";
+    public static final String CODIGO = "codigo";
+    public static final String PASSWORD = "password";
+    public static final String NOMBRE = "nombre";
+    public static final String COLEGIADO = "colegiado";
+    public static final String DPI = "DPI";
+    public static final String TELEFONO = "telefono";
+    public static final String CORREO = "correo";
+    public static final String HORARIO_INICIO = "horario_inicio";
+    public static final String HORARIO_FIN = "horario_fin";
+    public static final String FECHA_INICIO = "fecha_inicio";
+    
     private String codigo;
     private String password;
     private String nombre;

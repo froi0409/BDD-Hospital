@@ -26,12 +26,14 @@ public class IngresoCitaMedica extends Ingreso{
     public void ingresoArchivo(Connection connection) {
         
         String insert = "INSERT INTO " + CitaMedica.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?)";
-        String nombreEspecialidad = "SELECT D.nombre_especialidad FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico";
+        String nombreEspecialidad = "SELECT D.nombre_especialidad FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico AND codigo_medico = ?";
         String costo = "SELECT costo FROM ESPECIALIDAD WHERE nombre = ?";
         
         try (PreparedStatement preSt = connection.prepareStatement(insert);
                 PreparedStatement preSt2 = connection.prepareStatement(nombreEspecialidad);
                 PreparedStatement preSt3 = connection.prepareStatement(costo)) {
+            
+            preSt2.setString(1, cita.getCodigoMedico());
             
             ResultSet result2 = preSt2.executeQuery();
             result2.next(); //encontramos la especialidad del médico

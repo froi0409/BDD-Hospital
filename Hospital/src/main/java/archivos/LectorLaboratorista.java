@@ -52,6 +52,11 @@ public class LectorLaboratorista extends LectorArchivo{
             
         }
         
+        
+        
+        
+        atributos.clear();
+        
     }
     
     private void agregarDias(Estructura estruct){

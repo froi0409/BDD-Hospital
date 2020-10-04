@@ -5,9 +5,11 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.Especialidad;
 import entidades.Estructura;
 import entidades.Medico;
+import ingresos.IngresoMedico;
 import java.util.ArrayList;
 
 /**
@@ -24,6 +26,8 @@ public class LectorMedico extends LectorArchivo{
 
     @Override
     public void convertToEntidad(ArrayList<Estructura> atributos) {
+
+        medico.getEspecialidades().clear();
         
         for(Estructura element : atributos) {
             
@@ -47,9 +51,15 @@ public class LectorMedico extends LectorArchivo{
                 medico.setFecha(element.getDescripcion());
             } else if (element.getTipo().equals("PASSWORD")) {
                 medico.setPassword(element.getDescripcion());
+                
             }
             
         }
+        
+        //atributos.clear();
+        
+        IngresoMedico ingresador = new IngresoMedico(medico);
+        ingresador.ingresoArchivo(Conexion.getConnection());
         
     }
     
@@ -67,6 +77,8 @@ public class LectorMedico extends LectorArchivo{
                 
                 Especialidad especialidad = new Especialidad();
                 especialidad.setNombre(estruct.getDescripcion().substring(start, i));
+                
+                System.out.println("lol - " + estruct.getDescripcion().substring(start, i));
                 
                 medico.getEspecialidades().add(especialidad);
                 start = i + 1;
@@ -92,6 +104,7 @@ public class LectorMedico extends LectorArchivo{
                 
                 if(cont == 0){
                     medico.setHorarioInicio(estruct.getDescripcion().substring(start, i));
+                    cont++;
                 } else {
                     medico.setHorarioFin(estruct.getDescripcion().substring(start, i));
                 }
@@ -101,7 +114,7 @@ public class LectorMedico extends LectorArchivo{
             }
             
         }
-        
+    
     }
     
 }

@@ -35,10 +35,10 @@ public class IngresoInforme extends Ingreso{
             preSt.setString(5, informe.getCodigoMedico());
             preSt.setString(6, informe.getCodigoPaciente());
             
-            preSt.executeQuery();
+            preSt.executeUpdate();
             
         } catch (Exception e) {
-        
+            System.out.println("Error: " + e.getMessage());
         }
         
     }

@@ -5,8 +5,10 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.Estructura;
 import entidades.Examen;
+import ingresos.IngresoExamen;
 import java.util.ArrayList;
 
 /**
@@ -29,7 +31,7 @@ public class LectorExamen extends LectorArchivo{
             if(element.getTipo().equals("CODIGO")){
                 this.examen.setCodigo(element.getDescripcion());
             } else if (element.getTipo().equals("NOMBRE")){
-                this.examen.setCodigo(element.getDescripcion());
+                this.examen.setNombre(element.getDescripcion());
             } else if (element.getTipo().equals("ORDEN")) {
                 this.examen.setOrden(Boolean.parseBoolean(element.getDescripcion().toLowerCase()));
             } else if (element.getTipo().equals("DESCRIPCION")){
@@ -42,6 +44,8 @@ public class LectorExamen extends LectorArchivo{
             
         }
         
+        IngresoExamen ingresador = new IngresoExamen(examen);
+        ingresador.ingresoArchivo(Conexion.getConnection());
     }
     
 }

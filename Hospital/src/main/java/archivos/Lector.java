@@ -62,7 +62,7 @@ public class Lector {
                     
                     System.out.println("");
                     lector.convertToEntidad(atributos);
-                    
+                    atributos.clear();
                 }
                 
             }

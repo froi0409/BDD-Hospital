@@ -42,7 +42,7 @@ public class IngresoPaciente extends Ingreso{
             preSt.executeUpdate();
             
         } catch (Exception e) {
-        
+            System.out.println("Error: " + e.getMessage());
         }
     
     }

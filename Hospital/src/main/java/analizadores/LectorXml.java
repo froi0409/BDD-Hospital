@@ -25,6 +25,10 @@ public class LectorXml {
             LectorAdministrador lecAdministrador = new LectorAdministrador();
             lector.leerTag(path, "admin", lecAdministrador, administrador);
             
+            Especialidad especialidad = new Especialidad();
+            LectorConsulta lecEspecialidad = new LectorConsulta();
+            lector.leerTag(path, "consulta", lecEspecialidad, especialidad);
+            
             Medico medico = new Medico();
             LectorMedico lecMedico = new LectorMedico();
             lector.leerTag(path, "doctor", lecMedico, medico);
@@ -37,16 +41,21 @@ public class LectorXml {
             LectorPaciente lecPaciente = new LectorPaciente();
             lector.leerTag(path, "paciente", lecPaciente, paciente);
             
+            Examen examen = new Examen();
+            LectorExamen lecExamen = new LectorExamen();
+            lector.leerTag(path, "examen", lecExamen, examen);
             
-            LectorExamen examen = new LectorExamen();
+            Informe informe = new Informe();
+            LectorInforme lecInforme = new LectorInforme();
+            lector.leerTag(path, "reporte", lecInforme, informe);
             
-            LectorInforme informe = new LectorInforme();
+            Resultado resultado = new Resultado();
+            LectorResultado lecResultado = new LectorResultado();
+            lector.leerTag(path, "resultado", lecResultado, resultado);
             
-            LectorResultado resultado = new LectorResultado();
-            
-            LectorCita cita = new LectorCita();
-            
-            LectorConsulta consulta = new LectorConsulta();
+            CitaMedica cita = new CitaMedica();
+            LectorCita lecCita = new LectorCita();
+            lector.leerTag(path, "cita", lecCita, cita);
             
         } catch (Exception ex) {
             Logger.getLogger(LectorXml.class.getName()).log(Level.SEVERE, null, ex);
