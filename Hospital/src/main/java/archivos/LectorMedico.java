@@ -6,7 +6,9 @@
 package archivos;
 
 import entidades.Entidad;
+import entidades.Especialidad;
 import entidades.Estructura;
+import entidades.Medico;
 import java.util.ArrayList;
 
 /**
@@ -15,12 +17,65 @@ import java.util.ArrayList;
  */
 public class LectorMedico extends LectorArchivo{
 
+    private Medico medico;
+    
     public LectorMedico() {
+        medico = new Medico();
     }
 
     @Override
-    public void convertToEntidad(ArrayList<Estructura> al) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void convertToEntidad(ArrayList<Estructura> atributos) {
+        
+        for(Estructura element : atributos) {
+            
+            if (element.getTipo().equals("CODIGO")) {
+                medico.setCodigo(element.getDescripcion());
+            } else if (element.getTipo().equals("NOMBRE")) {
+                medico.setNombre(element.getDescripcion());
+            } else if (element.getTipo().equals("COLEGIADO")) {
+                medico.setColegiado(element.getDescripcion());
+            } else if (element.getTipo().equals("DPI")) {
+                medico.setDpi(element.getDescripcion());
+            } else if (element.getTipo().equals("TELEFONO")) {
+                medico.setTelefono(element.getDescripcion());
+            } else if (element.getTipo().equals("ESPECIALIDAD")) {
+                setEspecialidades(element);
+            } else if (element.getTipo().equals("CORREO")) {
+                medico.setCorreo(element.getDescripcion());
+            } else if (element.getTipo().equals("HORARIO")) {
+                
+            } else if (element.getTipo().equals("TRABAJO")) {
+                medico.setFecha(element.getDescripcion());
+            } else if (element.getTipo().equals("PASSWORD")) {
+                medico.setPassword(element.getDescripcion());
+            }
+            
+        }
+        
+    }
+    
+    private void setEspecialidades(Estructura estruct){
+        
+        int start = 1;
+        
+        for (int i = 1; i < estruct.getDescripcion().length(); i++){
+            
+            if(estruct.getDescripcion().charAt(i) == ' '){
+                start++;
+            }
+            
+            if(estruct.getDescripcion().charAt(i) == '\n'){
+                
+                Especialidad especialidad = new Especialidad();
+                especialidad.setNombre(estruct.getDescripcion().substring(start, i));
+                
+                medico.getEspecialidades().add(especialidad);
+                start = i + 1;
+                
+            }
+            
+        }
+        
     }
     
 }

@@ -36,6 +36,7 @@ public class Lector {
             Document documento = db.parse(new File(path));
             NodeList listaTag = documento.getElementsByTagName(tagName);
             
+            
             for(int i = 0; i < listaTag.getLength(); i++){
                 
                 Node nodo = listaTag.item(i);
@@ -50,7 +51,7 @@ public class Lector {
                         
                         Node hijo = hijos.item(j);
                         
-                        if(hijo.getNodeType() == Node.ELEMENT_NODE){
+                        if(hijo.getNodeType() == Node.ELEMENT_NODE) {
                             
                             System.out.println("Propiedad: " + hijo.getNodeName() + "     Valor: " + hijo.getTextContent());
                             atributos.add(new Estructura(hijo.getNodeName(),hijo.getTextContent()));

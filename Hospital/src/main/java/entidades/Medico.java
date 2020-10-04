@@ -5,6 +5,8 @@
  */
 package entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author froi-pc
@@ -18,8 +20,10 @@ public class Medico extends Entidad{
     private String dpi;
     private String telefono;
     private String correo;
-    private String horario;
+    private String horarioInicio;
+    private String horarioFin;
     private String fecha;
+    private ArrayList<Especialidad> especialidades = new ArrayList<Especialidad>();
 
     public String getCodigo() {
         return codigo;
@@ -77,14 +81,22 @@ public class Medico extends Entidad{
         this.correo = correo;
     }
 
-    public String getHorario() {
-        return horario;
+    public String getHorarioInicio() {
+        return horarioInicio;
     }
 
-    public void setHorario(String horario) {
-        this.horario = horario;
+    public void setHorarioInicio(String horarioInicio) {
+        this.horarioInicio = horarioInicio;
     }
 
+    public String getHorarioFin() {
+        return horarioFin;
+    }
+
+    public void setHorarioFin(String horarioFin) {
+        this.horarioFin = horarioFin;
+    }
+    
     public String getFecha() {
         return fecha;
     }
@@ -93,6 +105,12 @@ public class Medico extends Entidad{
         this.fecha = fecha;
     }
 
-    
-    
+    public ArrayList<Especialidad> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(ArrayList<Especialidad> especialidades) {
+        this.especialidades = especialidades;
+    }
+
 }

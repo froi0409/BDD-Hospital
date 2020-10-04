@@ -5,6 +5,8 @@
  */
 package entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author froi-pc
@@ -17,6 +19,9 @@ public class DiasTrabajo extends Entidad{
     private boolean miercoles;
     private boolean jueves;
     private boolean viernes;
+    private boolean sabado;
+    private boolean domingo;
+    private ArrayList<String> dias = new ArrayList<String>();
 
     public String getCodigo() {
         return codigo;
@@ -81,7 +86,14 @@ public class DiasTrabajo extends Entidad{
     public void setDomingo(boolean domingo) {
         this.domingo = domingo;
     }
-    private boolean sabado;
-    private boolean domingo;
+
+    public ArrayList<String> getDias() {
+        return dias;
+    }
+
+    public void setDias(ArrayList<String> dias) {
+        this.dias = dias;
+    }
+    
     
 }
