@@ -65,23 +65,32 @@
             <div class="container"> 
                 <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-4 formulario">
-                            <div class="form-group text-center pt-3">
-                                <h1>Iniciar Sesión</h1>
-                            </div>
-                            <div class="form-group mx-sm-5 pt-3">
-                                <label for="user">Usuario</label>
-                                <input type="text" class="form-control" placeholder="Ingrese Usuario" name="user"/>
-                            </div>
-                            <div class="form-group mx-sm-5 pb-3">
-                                <label for="user">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Ingrese Usuario" name="password"/>
-                            </div>
-                            <div class="form-group mx-sm-5 pb-5"><!-- comment -->
+                        <div class="form-group text-center pt-3">
+                            <h1>Iniciar Sesión</h1>
+                        </div>
+                        <div class="form-froup mx-sm-5 pt3">
+                            <label for="user">Seleccione su tipo de usuario:</label>
+                            <select name="TABLA">
+                                <option>Paciente</option>
+                                <option>Laboratorista</option>
+                                <option>Medico</option>
+                                <option>Administrador</option>
+                            </select>
+                        </div>
+                        <div class="form-group mx-sm-5 pt-3">
+                            <label for="user">Usuario</label>
+                            <input type="text" class="form-control" placeholder="Ingrese Usuario" name="user"/>
+                        </div>
+                        <div class="form-group mx-sm-5 pb-3">
+                            <label for="user">Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Ingrese Usuario" name="password"/>
+                        </div>
+                        <div class="form-group mx-sm-5 pb-5"><!-- comment -->
 
-                                <input type="submit" class="btn btn-primary ingresar btn-block" value="Ingresar"/>
-                                
-                            </div>
-                            
+                            <input type="submit" class="btn btn-primary ingresar btn-block" value="Ingresar"/>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

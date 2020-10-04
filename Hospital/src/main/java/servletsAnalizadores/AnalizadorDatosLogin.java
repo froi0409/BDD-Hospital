@@ -6,6 +6,7 @@
 package servletsAnalizadores;
 
 import analizadores.AnalizadorDeDatos;
+import analizadores.AnalizarContraseña;
 import analizadores.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,12 +66,26 @@ public class AnalizadorDatosLogin extends HttpServlet {
             throws ServletException, IOException {
         Conexion con = new Conexion();
         AnalizadorDeDatos analizador = new AnalizadorDeDatos();
+        AnalizarContraseña encriptador = new AnalizarContraseña();
+        
+        String tabla = request.getParameter("TABLA").toUpperCase();
+        String usuario = request.getParameter("user"); //Obtenemos el usuario
+        String password = encriptador.encriptar(request.getParameter("password")); //Obtenemos la contraseña
+        
+        System.out.println("Contraseña: " + password);
         
         //condición que nos permite saber si la base de datos está vacía y si los datos ingresados en el formulario son los del creador de la base de datos
         if(!analizador.baseLlena(Conexion.getConnection()) && request.getParameter("user").equals(con.getUser()) && request.getParameter("password").equals(con.getPassword())){
-            request.getRequestDispatcher("/subir-archivo.jsp").forward(request, response);
-            //response.sendRedirect("/subir-archivo.jsp");
-        } else if (!analizador.baseLlena(Conexion.getConnection())) {
+            
+            request.getRequestDispatcher("/subir-archivo.jsp").forward(request, response); //Nos dirigimos a la pagina de ingreso de archivos
+            
+        } else if (analizador.inicioSesion(usuario, password, tabla, Conexion.getConnection())) {
+            
+            String rutaJsp = "/inicio-" + tabla.toLowerCase() + ".jsp";
+            
+            request.getRequestDispatcher(rutaJsp).forward(request, response);
+            
+        } else {
             
         }
         //processRequest(request, response);

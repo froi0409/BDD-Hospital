@@ -43,7 +43,7 @@ public class AnalizarContraseña {
     }
     
     public String desencriptar(String password){
-        String secretKey = "qualityinfosolutions"; //llave para encriptar datos
+        String secretKey = "labipc2"; //llave para encriptar datos
         String base64EncryptedString = "";
 
         try {
