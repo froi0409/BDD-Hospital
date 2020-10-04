@@ -5,15 +5,10 @@
  */
 package analizadores;
 
-import java.io.File;
+import archivos.*;
+import entidades.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 
 /**
  *
@@ -24,15 +19,49 @@ public class LectorXml {
     public void read(String path){
         try {
             
+            Lector lector = new Lector();
             
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document documento = db.parse(new File(path));
-            NodeList lsitaDoctores = documento.getElementsByTagName("coche");
+            Administrador administrador = new Administrador();
+            LectorAdministrador lecAdministrador = new LectorAdministrador();
+            lector.leerTag(path, "admin", lecAdministrador, administrador);
+            
+            Especialidad especialidad = new Especialidad();
+            LectorConsulta lecEspecialidad = new LectorConsulta();
+            lector.leerTag(path, "consulta", lecEspecialidad, especialidad);
+            
+            Medico medico = new Medico();
+            LectorMedico lecMedico = new LectorMedico();
+            lector.leerTag(path, "doctor", lecMedico, medico);
+
+            Paciente paciente = new Paciente();
+            LectorPaciente lecPaciente = new LectorPaciente();
+            lector.leerTag(path, "paciente", lecPaciente, paciente);
+            
+            Examen examen = new Examen();
+            LectorExamen lecExamen = new LectorExamen();
+            lector.leerTag(path, "examen", lecExamen, examen);
+                     
+            Laboratorista laboratorista = new Laboratorista();
+            LectorLaboratorista lecLaboratorista = new LectorLaboratorista();
+            lector.leerTag(path, "laboratorista", lecLaboratorista, laboratorista);
+            
+            Informe informe = new Informe();
+            LectorInforme lecInforme = new LectorInforme();
+            lector.leerTag(path, "reporte", lecInforme, informe);
+            
+            Resultado resultado = new Resultado();
+            LectorResultado lecResultado = new LectorResultado();
+            lector.leerTag(path, "resultado", lecResultado, resultado);
+            
+            CitaMedica cita = new CitaMedica();
+            LectorCita lecCita = new LectorCita();
+            lector.leerTag(path, "cita", lecCita, cita);
             
         } catch (Exception ex) {
             Logger.getLogger(LectorXml.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
     
 }

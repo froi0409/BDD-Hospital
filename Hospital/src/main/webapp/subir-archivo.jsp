@@ -34,7 +34,7 @@
         </div>
         
         
-        <form action="../LecturaArchivo" method="POST" enctype="multipart/form-data">
+        <form action="LecturaArchivo" method="POST" enctype="multipart/form-data">
             <div class="container">
                 <div class="row justify-content-center pt-4 mr-1 mt-5">
                     <div class="col-md-4 formulario">

@@ -6,6 +6,7 @@
 package servletsAnalizadores;
 
 import analizadores.ArchivoDeEntrada;
+import analizadores.LectorXml;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -37,7 +38,8 @@ public class LecturaArchivo extends HttpServlet {
        ArchivoDeEntrada lector = new ArchivoDeEntrada(request,"ruta"); //Enviamos al constructor la propiedad request
        path = lector.getPath();//obtenemos el path del archivo en el servidor
        
-       
+       LectorXml lectxml = new LectorXml();
+       lectxml.read(path);
        
     }
 
