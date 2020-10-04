@@ -13,6 +13,16 @@ import java.util.ArrayList;
  */
 public class DiasTrabajo extends Entidad{
     
+    public static final String NOMBRE_TABLA = "DIAS_TRABAJO";
+    public static final String CODIGO = "codigo";
+    public static final String LUNES = "lunes";
+    public static final String MARTES = "martes";
+    public static final String MIERCOLES = "miercoles";
+    public static final String JUEVES = "jueves";
+    public static final String VIERNES = "viernes";
+    public static final String SABADO = "sabado";
+    public static final String DOMINGO = "domingo";
+    
     private String codigo;
     private boolean lunes;
     private boolean martes;

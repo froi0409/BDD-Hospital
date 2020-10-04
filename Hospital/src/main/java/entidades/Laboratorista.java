@@ -13,6 +13,18 @@ import analizadores.AnalizarContraseña;
  */
 public class Laboratorista extends Entidad{
     
+    public static final String NOMBRE_TABLA = "LABORATORISTA";
+    public static final String CODIGO = "codigo";
+    public static final String NOMBRE = "nombre";
+    public static final String REGISTRO = "registro";
+    public static final String DPI = "DPI";
+    public static final String TELEFONO = "telefono";
+    public static final String CORREO = "correo";
+    public static final String FECHA_INICIO = "fecha_inicio";
+    public static final String PASSWORD = "password";
+    public static final String CODIGO_EXAMEN = "codigo_examen";
+    public static final String CODIGO_DIAS_TRABAJO = "dias_trabajo_codigo";
+    
     private String codigo;
     private String nombre;
     private String registro;

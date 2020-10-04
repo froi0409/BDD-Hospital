@@ -32,11 +32,7 @@ public class LectorXml {
             Medico medico = new Medico();
             LectorMedico lecMedico = new LectorMedico();
             lector.leerTag(path, "doctor", lecMedico, medico);
-            
-            Laboratorista laboratorista = new Laboratorista();
-            LectorLaboratorista lecLaboratorista = new LectorLaboratorista();
-            lector.leerTag(path, "laboratorista", lecLaboratorista, laboratorista);
-            
+
             Paciente paciente = new Paciente();
             LectorPaciente lecPaciente = new LectorPaciente();
             lector.leerTag(path, "paciente", lecPaciente, paciente);
@@ -44,6 +40,10 @@ public class LectorXml {
             Examen examen = new Examen();
             LectorExamen lecExamen = new LectorExamen();
             lector.leerTag(path, "examen", lecExamen, examen);
+                     
+            Laboratorista laboratorista = new Laboratorista();
+            LectorLaboratorista lecLaboratorista = new LectorLaboratorista();
+            lector.leerTag(path, "laboratorista", lecLaboratorista, laboratorista);
             
             Informe informe = new Informe();
             LectorInforme lecInforme = new LectorInforme();

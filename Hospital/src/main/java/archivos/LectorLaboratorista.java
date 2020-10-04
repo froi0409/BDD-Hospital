@@ -5,9 +5,11 @@
  */
 package archivos;
 
+import analizadores.Conexion;
 import entidades.DiasTrabajo;
 import entidades.Estructura;
 import entidades.Laboratorista;
+import ingresos.IngresoLaboratorista;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +35,7 @@ public class LectorLaboratorista extends LectorArchivo{
             } else if (element.getTipo().equals("NOMBRE")) {
                 laboratorista.setNombre(element.getDescripcion());
             } else if (element.getTipo().equals("REGISTRO")) {
-                laboratorista.setNombre(element.getDescripcion());
+                laboratorista.setRegistro(element.getDescripcion());
             } else if (element.getTipo().equals("DPI")) {
                 laboratorista.setDpi(element.getDescripcion());
             } else if (element.getTipo().equals("TELEFONO")) {
@@ -53,9 +55,10 @@ public class LectorLaboratorista extends LectorArchivo{
         }
         
         
-        
-        
+        IngresoLaboratorista ingresador = new IngresoLaboratorista(laboratorista, dias);
         atributos.clear();
+        ingresador.ingresoArchivo(Conexion.getConnection());
+        
         
     }
     
@@ -73,6 +76,8 @@ public class LectorLaboratorista extends LectorArchivo{
             if(estruct.getDescripcion().charAt(i) == '\n'){
                 
                 dias.getDias().add(estruct.getDescripcion().substring(start,i));
+                
+                System.out.println("+++++--- " + estruct.getDescripcion().substring(start,i) );
                 
                 switch(estruct.getDescripcion().substring(start,i)){
                     case "LUNES":
