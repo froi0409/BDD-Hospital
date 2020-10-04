@@ -19,10 +19,11 @@ import java.util.ArrayList;
 public class LectorLaboratorista extends LectorArchivo{
 
     private Laboratorista laboratorista;
-    private DiasTrabajo dias = new DiasTrabajo();
+    private DiasTrabajo dias;
     
     public LectorLaboratorista() {
         laboratorista = new Laboratorista();
+        dias = new DiasTrabajo();
     }
 
     @Override
@@ -64,6 +65,14 @@ public class LectorLaboratorista extends LectorArchivo{
     
     private void agregarDias(Estructura estruct){
         
+        dias.setLunes(false);
+        dias.setMartes(false);
+        dias.setMiercoles(false);
+        dias.setJueves(false);
+        dias.setViernes(false);
+        dias.setSabado(false);
+        dias.setDomingo(false);
+        
         int start = 1;
         int cont = 1;
         
@@ -77,31 +86,24 @@ public class LectorLaboratorista extends LectorArchivo{
                 
                 dias.getDias().add(estruct.getDescripcion().substring(start,i));
                 
-                System.out.println("+++++--- " + estruct.getDescripcion().substring(start,i) );
+                System.out.println("+++++---" + estruct.getDescripcion().substring(start,i) );
                 
-                switch(estruct.getDescripcion().substring(start,i)){
-                    case "LUNES":
-                        dias.setLunes(true);
-                        break;
-                    case "MARTES":
-                        dias.setMartes(true);
-                        break;
-                    case "MIERCOLES":
-                        dias.setMiercoles(true);
-                        break;
-                    case "JUEVES":
-                        dias.setJueves(true);
-                        break;
-                    case "VIERNES":
-                        dias.setViernes(true);
-                        break;
-                    case "SABADO":
-                        dias.setSabado(true);
-                        break;
-                    case "DOMINGO":
-                        dias.setDomingo(true);
-                        break;
+                if(estruct.getDescripcion().substring(start,i).equals("Lunes")) {
+                    dias.setLunes(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Martes")) {
+                    dias.setMartes(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Miercoles")) {
+                    dias.setMiercoles(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Jueves")) {
+                    dias.setJueves(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Viernes")) {
+                    dias.setViernes(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Sabado")) {
+                    dias.setSabado(true);
+                } else if (estruct.getDescripcion().substring(start,i).equals("Domingo")) {
+                    dias.setDomingo(true);
                 }
+                
                 start = i + 1;
                 
             }

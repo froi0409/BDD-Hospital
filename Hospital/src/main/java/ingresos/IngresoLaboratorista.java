@@ -29,7 +29,19 @@ public class IngresoLaboratorista extends Ingreso {
     @Override
     public void ingresoArchivo(Connection connection) {
         
-        String query = "SELECT codigo FROM " + DiasTrabajo.NOMBRE_TABLA + " WHERE " + DiasTrabajo.LUNES + " = ? AND " + DiasTrabajo.MARTES + " = ? AND " + DiasTrabajo.MIERCOLES + " = ? AND " + DiasTrabajo.JUEVES + " = ? AND " + DiasTrabajo.VIERNES + " = ? AND " + DiasTrabajo.SABADO + " = ? AND " + DiasTrabajo.DOMINGO + " = ?";
+        System.out.println("---------------------------------------");
+        System.out.println(dias.isLunes());
+        System.out.println(dias.isMartes());
+        System.out.println(dias.isMiercoles());
+        System.out.println(dias.isJueves());
+        System.out.println(dias.isViernes());
+        System.out.println(dias.isSabado());
+        System.out.println(dias.isDomingo());
+        System.out.println("---------------------------------------");
+        
+        
+        
+        String query = "SELECT codigo FROM " + DiasTrabajo.NOMBRE_TABLA + " WHERE " + DiasTrabajo.LUNES + " = ? AND " + DiasTrabajo.MARTES + " = ? AND " + DiasTrabajo.MIERCOLES + " = ? AND " + DiasTrabajo.JUEVES + " = ? AND " + DiasTrabajo.VIERNES + " = ? AND " + DiasTrabajo.SABADO + " = ? AND " + DiasTrabajo.DOMINGO + " = ? ORDER BY codigo DESC";
         String insertL = "INSERT INTO " + Laboratorista.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
         String insertD = "INSERT INTO " + DiasTrabajo.NOMBRE_TABLA + "(" + DiasTrabajo.LUNES + "," + DiasTrabajo.MARTES + "," + DiasTrabajo.MIERCOLES + "," + DiasTrabajo.JUEVES + "," + DiasTrabajo.VIERNES + "," + DiasTrabajo.SABADO + "," + DiasTrabajo.DOMINGO + ") VALUES (?,?,?,?,?,?,?)";
         String nombreExamen = "SELECT codigo FROM " + Examen.NOMBRE_TABLA + " WHERE nombre = ?";        
@@ -42,6 +54,16 @@ public class IngresoLaboratorista extends Ingreso {
                 PreparedStatement preSt3 = connection.prepareStatement(insertL);
                 PreparedStatement preSt4 = connection.prepareStatement(nombreExamen)) {
             
+            preSt2.setBoolean(1, dias.isLunes());
+            preSt2.setBoolean(2, dias.isMartes());
+            preSt2.setBoolean(3, dias.isMiercoles());
+            preSt2.setBoolean(4, dias.isJueves());
+            preSt2.setBoolean(5, dias.isViernes());
+            preSt2.setBoolean(6, dias.isSabado());
+            preSt2.setBoolean(7, dias.isDomingo());
+            
+            preSt2.executeUpdate();
+            
             preSt.setBoolean(1, dias.isLunes());
             preSt.setBoolean(2, dias.isMartes());
             preSt.setBoolean(3, dias.isMiercoles());
@@ -49,42 +71,11 @@ public class IngresoLaboratorista extends Ingreso {
             preSt.setBoolean(5, dias.isViernes());
             preSt.setBoolean(6, dias.isSabado());
             preSt.setBoolean(7, dias.isDomingo());
-            ResultSet result = preSt.executeQuery();
             
-            if(!result.next()){
-                
-                preSt2.setBoolean(1, dias.isLunes());
-                preSt2.setBoolean(2, dias.isMartes());
-                preSt2.setBoolean(3, dias.isMiercoles());
-                preSt2.setBoolean(4, dias.isJueves());
-                preSt2.setBoolean(5, dias.isViernes());
-                preSt2.setBoolean(6, dias.isSabado());
-                preSt2.setBoolean(7, dias.isDomingo());
-                
-                preSt2.executeUpdate();
-                
-                PreparedStatement cod = connection.prepareStatement(query);
-                
-                cod.setBoolean(1, dias.isLunes());
-                cod.setBoolean(2, dias.isMartes());
-                cod.setBoolean(3, dias.isMiercoles());
-                cod.setBoolean(4, dias.isJueves());
-                cod.setBoolean(5, dias.isViernes());
-                cod.setBoolean(6, dias.isSabado());
-                cod.setBoolean(7, dias.isDomingo());
-                
-                ResultSet resultCod = cod.executeQuery();
-                
-                resultCod.next();
-                
-                codigoDias = resultCod.getString(1);
-                
-                cod.close();
-                resultCod.close();
-                
-            } else {
-                codigoDias = result.getString(1);
-            }
+            ResultSet result3 = preSt.executeQuery();
+            result3.next();
+            codigoDias = result3.getString(1);
+            
             
             //Obtenemos el codigo del examen
             preSt4.setString(1, laboratorista.getCodigoExamen());
