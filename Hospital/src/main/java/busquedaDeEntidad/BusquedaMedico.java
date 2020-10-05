@@ -9,7 +9,9 @@ import entidades.Medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
@@ -26,29 +28,32 @@ public class BusquedaMedico {
      */
     public boolean disponibilidadDeHorario(Connection connection, String codigoMedico, String hora){
         
-        String query = "SELECT (" + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + ") FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
+        String query = "SELECT " + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + " FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
         
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
             
             preSt.setString(1, codigoMedico);
             
             ResultSet result = preSt.executeQuery();
-            result.next(); //Encontramos el horario
-            
-            LocalTime entrada = LocalTime.parse(result.getString(1));
-            LocalTime salida = LocalTime.parse(result.getString(2));
-            LocalTime solicitada = LocalTime.parse(hora);
-            
-            System.out.println("E: " + entrada + " S: " + salida);
-            
-            if(solicitada.getHour() < salida.getHour() && solicitada.getHour() > entrada.getHour()) {
-                return true;
+            if(result.next()) { //Encontramos el horario
+                Date entrada = new SimpleDateFormat("HH:mm").parse(result.getString(1));
+                Date salida = new SimpleDateFormat("HH:mm").parse(result.getString(2));
+                Date solicitada = new SimpleDateFormat("HH:mm").parse(hora);
+
+                System.out.println("E: " + entrada + " S: " + salida);
+
+                if(solicitada.after(entrada) && solicitada.before(salida)) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
             
+            
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error disponibilidad medico: " + e.getMessage());
             return false;
         }
         

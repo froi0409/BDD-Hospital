@@ -43,7 +43,7 @@ public class BusquedaEspecialidad {
             }
             
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error especialidad all: " + e.getMessage());
         }
         
         return lista;

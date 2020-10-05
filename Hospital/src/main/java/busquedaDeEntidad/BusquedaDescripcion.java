@@ -28,7 +28,8 @@ public class BusquedaDescripcion {
         
         if (exists(connection, codigoMedico, especialidad)) {
             
-            String query = "SELECT costo FROM" + Especialidad.NOMBRE_TABLA + " WHERE nombre = ?";
+            String query = "SELECT " + Especialidad.COSTO + " FROM " + Especialidad.NOMBRE_TABLA + " WHERE " + Especialidad.NOMBRE + " = ?";
+            System.out.println(query);
             
             try (PreparedStatement preSt = connection.prepareStatement(query)) {
                 
@@ -36,11 +37,12 @@ public class BusquedaDescripcion {
                 
                 ResultSet result = preSt.executeQuery();
                 result.next();
+                System.out.println(result.getString(1));
                 
                 return result.getDouble(1);
                 
             } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+                System.out.println("Error costo cita: " + e.getMessage());
                 return 0.00;
             }
             
@@ -59,7 +61,7 @@ public class BusquedaDescripcion {
      */
     public boolean exists(Connection connection, String codigoMedico, String especialidad) {
         
-        String query = "SELECT COUNT(*) FROM " + Descripcion.NOMBRE_TABLA + " WHERE codigo_medico = ? AND nombre_especialidad = ?";
+        String query = "SELECT COUNT(*) FROM " + Descripcion.NOMBRE_TABLA + " WHERE " + Descripcion.CODIGO_MEDICO + " = ? AND " + Descripcion.NOMBRE_ESPECIALIDAD + " = ?";
         
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
             
@@ -76,7 +78,7 @@ public class BusquedaDescripcion {
             }
             
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error exists: " + e.getMessage());
             return false;
         }
         

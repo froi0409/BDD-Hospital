@@ -5,6 +5,9 @@
  */
 package servletsAnalizadores;
 
+import analizadores.Conexion;
+import entidades.CitaMedica;
+import ingresos.IngresoCitaMedica;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,47 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 public class CrearCita extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CrearCita</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CrearCita at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -72,17 +34,31 @@ public class CrearCita extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        if (request.getSession().getAttribute("codigo") == null) {
+            response.sendRedirect("inicio-sesion.jsp");
+        }
+        
+        CitaMedica cita = new CitaMedica();
+        
+        cita.setCodigo(request.getSession().getAttribute("codigoCitaMedica").toString());
+        cita.setFecha(request.getSession().getAttribute("fecha").toString());
+        cita.setHora(request.getSession().getAttribute("hora").toString());
+        cita.setCosto(Double.parseDouble(request.getSession().getAttribute("costo").toString()));
+        cita.setCodigoMedico(request.getSession().getAttribute("codigoMedico").toString());
+        cita.setCodigoPaciente(request.getSession().getAttribute("codigo").toString());
+        cita.setNombreEspecialidad(request.getSession().getAttribute("especialidad").toString());
+        
+        IngresoCitaMedica ingresador = new IngresoCitaMedica(cita);
+        ingresador.ingresoNormal(Conexion.getConnection());
+        
+        request.getSession().removeAttribute("codigoCitaMedica");
+        request.getSession().removeAttribute("fecha");
+        request.getSession().removeAttribute("hora");
+        request.getSession().removeAttribute("costo");
+        request.getSession().removeAttribute("codigoMedico");
+        request.getSession().removeAttribute("especialidad");
+        
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

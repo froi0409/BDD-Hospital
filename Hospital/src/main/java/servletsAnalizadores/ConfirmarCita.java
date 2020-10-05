@@ -5,6 +5,8 @@
  */
 package servletsAnalizadores;
 
+import analizadores.Conexion;
+import busquedaDeEntidad.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -21,47 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ConfirmarCita extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ConfirmarCita</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ConfirmarCita at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
      * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
@@ -72,17 +33,63 @@ public class ConfirmarCita extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        //Verificamos que el usuario esté dentro de la sesion
+        if (request.getSession().getAttribute("codigo") == null) {
+            response.sendRedirect("inicio-sesion.jsp");
+        }
+        
+        BusquedaDescripcion descripcion = new BusquedaDescripcion();
+        BusquedaMedico medico = new BusquedaMedico();
+        BusquedaCitaMedica cita = new BusquedaCitaMedica();
+        
+        
+        boolean aceptacion = true;
+        String error = "";
+        String codigoMedico = request.getParameter("medico");
+        String especialidad = request.getParameter("especialidad");
+        String fecha = request.getParameter("fecha");
+        String hora = request.getParameter("hora");
+        
+        if (!descripcion.exists(Conexion.getConnection(), codigoMedico, especialidad)) {
+            aceptacion = false;
+            error += "El médico ingresado no posee la especialidad seleccionada. ";
+        } 
+        
+        if (!medico.disponibilidadDeHorario(Conexion.getConnection(), codigoMedico, hora)) {
+            aceptacion = false;
+            error += "El médico no trabaja en el horario solicitado. ";
+        } else if (cita.medicoOcupado(Conexion.getConnection(), codigoMedico, fecha, hora)) {
+            aceptacion = false;
+            error += "El médico se encuentra ocupado en el horario solicitado. ";
+        }
+        
+        if (aceptacion) {
+            
+            double costo = descripcion.getCostoCita(Conexion.getConnection(), codigoMedico, especialidad);
+            String codigoPaciente = (String) request.getSession().getAttribute("codigo");
+            String codigoCitaMedica = codigoMedico + codigoPaciente + fecha + hora;
+            
+            request.getSession().setAttribute("codigoMedico", codigoMedico);
+            request.getSession().setAttribute("especialidad", especialidad);
+            request.getSession().setAttribute("fecha", fecha);
+            request.getSession().setAttribute("hora", hora);
+            request.getSession().setAttribute("costo", costo);
+            request.getSession().setAttribute("codigoCitaMedica", codigoCitaMedica);
+            request.getSession().setAttribute("aprobacion", true);
+            
+            request.getRequestDispatcher("paciente-confirmacion-cita.jsp").forward(request, response);
+            
+        } else {
+            
+            request.setAttribute("mensaje", error);
+            request.setAttribute("aprobacion", false);
+            
+            request.getRequestDispatcher("paciente-confirmacion-cita.jsp").forward(request, response);
+            
+        }
+        
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
