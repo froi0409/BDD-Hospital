@@ -52,7 +52,7 @@
                             <input type="text" class="form-control" placeholder="Ingrese Codigo del Médico" name="medico"/> 
                             <br>
                             <!<!-- busca las especialidades -->
-                            
+                            <label for="especialidad">Especialidad de la consulta:</label>
                             <select name="especialidad" class="btn-block">
                                 <%
                                 BusquedaEspecialidad find = new BusquedaEspecialidad();
@@ -68,10 +68,15 @@
                             <input type="date" class="form-control" name="fecha"/> 
                             <br>
                             <label for="hora">Hora de la Cita (HH:00): </label>
-                            <input type="number" class="form-control" name="hora"/>
+                            <select name="hora" class="btn-block">
+                                <%
+                                for(int i = 8; i < 23; i++) {
+                                    out.println("<option>" + i + ":00</option>");
+                                }
+                                %>
+                            </select>
+                            
                             <br>
-                            
-                            
                             
                             <input type="submit" class="btn btn-primary ingresar btn-block" value="Soilicitar"/>
 
