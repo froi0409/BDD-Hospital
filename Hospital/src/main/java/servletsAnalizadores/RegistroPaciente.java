@@ -52,6 +52,9 @@ public class RegistroPaciente extends HttpServlet {
         
         if (ingresador.ingresoNormal(Conexion.getConnection())){
             
+            request.setAttribute("mensaje", "REGISTRADO CON ÉXITO, INICIE SESIÓN");
+            request.getRequestDispatcher("/inicio-sesion.jsp").forward(request, response);
+            
         } else {
             
         }

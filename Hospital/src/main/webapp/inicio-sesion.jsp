@@ -58,16 +58,17 @@
                     </div>
                 </div>
             <%   
-                } else if(request.getParameter("mensaje") != null && request.getParameter("mensaje").length() > 0) {
+                } else if(request.getParameter("mensaje") != null) {
             %>
                 <br><br>
             
                 <div class="container">
-                    <div class="alert alert-primary" role="alert" align="center">
+                    <div class="alert alert-warning" role="alert" align="center">
                         ${mensaje}
                     </div>
                 </div>
             <%
+                System.out.println( "mensaje" + request.getParameter("mensaje"));
                 }
 
             }catch(Exception e) {
