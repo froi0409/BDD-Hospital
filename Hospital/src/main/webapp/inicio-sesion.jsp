@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-froup mx-sm-5 pt3">
                             <label for="user">Seleccione su tipo de usuario:</label>
-                            <select name="TABLA">
+                            <select name="TABLA" class="btn-block">
                                 <option>Paciente</option>
                                 <option>Laboratorista</option>
                                 <option>Medico</option>
