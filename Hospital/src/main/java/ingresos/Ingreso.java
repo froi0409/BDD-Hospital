@@ -14,6 +14,8 @@ import java.sql.Connection;
  */
 public abstract class Ingreso {
     
-    public abstract void ingresoArchivo(Connection connection);
+    public abstract boolean ingresoArchivo(Connection connection);
+    
+    public abstract boolean ingresoNormal(Connection connection);
     
 }

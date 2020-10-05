@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS PACIENTE(
   nombre VARCHAR(75) NOT NULL,
   sexo VARCHAR(12) NOT NULL,
   fecha_nacimiento DATE NOT NULL,
-  tipo_sangre VARCHAR(5) NOT NULL,
+  tipo_sangre VARCHAR(15) NOT NULL,
   telefono VARCHAR(12) NOT NULL,
   peso DECIMAL(9,4) NOT NULL,
   correo VARCHAR(75) NOT NULL,

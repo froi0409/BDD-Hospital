@@ -46,7 +46,7 @@
         </div>
         
         <!-- mostramos mensaje si la base de datos está vacia -->
-        <%
+            <%
             AnalizadorDeDatos analizador = new AnalizadorDeDatos();
             try{
                 if(!analizador.baseLlena(Conexion.getConnection())){ %>
@@ -54,11 +54,26 @@
             
                 <div class="container">
                     <div class="alert alert-primary" role="alert" align="center">
-                        SISTEMA VACIO, FAVOR CONTACTAR AL ADMINISTRADOR
+                        SISTEMA VACÍO, FAVOR CONTACTAR AL HOSPITAL
                     </div>
                 </div>
-                
-            <%} }catch(Exception e) {}%>
+            <%   
+                } else if(request.getParameter("mensaje") != null && request.getParameter("mensaje").length() > 0) {
+            %>
+                <br><br>
+            
+                <div class="container">
+                    <div class="alert alert-primary" role="alert" align="center">
+                        ${mensaje}
+                    </div>
+                </div>
+            <%
+                }
+
+            }catch(Exception e) {
+
+            }
+            %>
             
         <!-- Creamos la ventana del login -->
         <form action="AnalizadorDatosLogin" method="POST">

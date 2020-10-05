@@ -22,7 +22,7 @@ public class IngresoResultado extends Ingreso {
     }
 
     @Override
-    public void ingresoArchivo(Connection connection) {
+    public boolean ingresoArchivo(Connection connection) {
         
         String insert = "INSERT INTO " + Resultado.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?)";
         
@@ -40,10 +40,18 @@ public class IngresoResultado extends Ingreso {
             
             preSt.executeUpdate();
             
+            return true;
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return false;
         }
         
+    }
+
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -27,19 +27,7 @@ public class IngresoLaboratorista extends Ingreso {
     }
     
     @Override
-    public void ingresoArchivo(Connection connection) {
-        
-        System.out.println("---------------------------------------");
-        System.out.println(dias.isLunes());
-        System.out.println(dias.isMartes());
-        System.out.println(dias.isMiercoles());
-        System.out.println(dias.isJueves());
-        System.out.println(dias.isViernes());
-        System.out.println(dias.isSabado());
-        System.out.println(dias.isDomingo());
-        System.out.println("---------------------------------------");
-        
-        
+    public boolean ingresoArchivo(Connection connection) {
         
         String query = "SELECT codigo FROM " + DiasTrabajo.NOMBRE_TABLA + " WHERE " + DiasTrabajo.LUNES + " = ? AND " + DiasTrabajo.MARTES + " = ? AND " + DiasTrabajo.MIERCOLES + " = ? AND " + DiasTrabajo.JUEVES + " = ? AND " + DiasTrabajo.VIERNES + " = ? AND " + DiasTrabajo.SABADO + " = ? AND " + DiasTrabajo.DOMINGO + " = ? ORDER BY codigo DESC";
         String insertL = "INSERT INTO " + Laboratorista.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -96,10 +84,18 @@ public class IngresoLaboratorista extends Ingreso {
             
             preSt3.executeUpdate();
             
+            return true;
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return false;
         }
         
+    }
+
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -42,7 +42,7 @@
                <br>
             </div>
             
-            <div class="container formulario pt-4"> 
+            <div class="container formulario pt-4" style="margin-bottom: 30px"> 
                 <div class="row justify-content-center pt-1 mt-5 mr-1 " align="center">
                     <h1>Registro de Datos</h1>
                 </div>
@@ -57,6 +57,9 @@
                             <label for="codigo">Usuario:</label>
                             <input type="text" class="form-control" placeholder="Ingrese Usuario" name="codigo"/>
                             <br>
+                            <label for="password">Contraseña:</label>
+                            <input type="password" class="form-control" name="password"/>
+                            <br>
                             <label for="nombre">Nombre:</label>
                             <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre"/>
                             <br>
@@ -69,9 +72,7 @@
                             <label for="fecha">Fecha de Nacimiento</label>
                             <input type="date" class="form-control" name="fecha"/>
                             <br>
-                            <label for="dpi">DPI:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi"/>
-                            <br>
+
                             
                         </div>
                         
@@ -81,10 +82,13 @@
                         
                         <div class="form-froup mx-sm-5 pb-5">
                         
+                            <label for="dpi">DPI:</label>
+                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi"/>
+                            <br>
                             <label for="telefono">Telefono:</label>
                             <input type="number" class="form-control" placeholder="Ingrese Teledono" name="telefono"/>
                             <br>
-                            <label for="peso">Peso:</label>
+                            <label for="peso">Peso (Kg):</label>
                             <input type="number" step="any" class="form-control" placeholder="Ingrese su Peso" name="peso"/>
                             <br>
                             <label for="sangre">Tipo de Sangre:</label>

@@ -72,12 +72,19 @@ public class AnalizadorDatosLogin extends HttpServlet {
         String usuario = request.getParameter("user"); //Obtenemos el usuario
         String password = encriptador.encriptar(request.getParameter("password")); //Obtenemos la contraseña
         
-        System.out.println("Contraseña: " + password);
         
         //condición que nos permite saber si la base de datos está vacía y si los datos ingresados en el formulario son los del creador de la base de datos
-        if(!analizador.baseLlena(Conexion.getConnection()) && request.getParameter("user").equals(con.getUser()) && request.getParameter("password").equals(con.getPassword())){
+        if(!analizador.baseLlena(Conexion.getConnection())){
             
-            request.getRequestDispatcher("/subir-archivo.jsp").forward(request, response); //Nos dirigimos a la pagina de ingreso de archivos
+            if(request.getParameter("user").equals(con.getUser()) && request.getParameter("password").equals(con.getPassword())) {
+                request.getRequestDispatcher("/subir-archivo.jsp").forward(request, response); //Nos dirigimos a la pagina de ingreso de archivos
+            } else {
+                request.setAttribute("mensaje", "ERROR: VERIFIQUE SUS DATOS");
+                request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
+            }
+            
+            
+            
             
         } else if (analizador.inicioSesion(usuario, password, tabla, Conexion.getConnection())) {
             
@@ -90,7 +97,7 @@ public class AnalizadorDatosLogin extends HttpServlet {
         }
         //processRequest(request, response);
     }
-
+ 
     /**
      * Returns a short description of the servlet.
      *

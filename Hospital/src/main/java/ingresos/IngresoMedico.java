@@ -24,9 +24,9 @@ public class IngresoMedico extends Ingreso {
     }
 
     @Override
-    public void ingresoArchivo(Connection connection) {
+    public boolean ingresoArchivo(Connection connection) {
         
-        
+        boolean comprobacion = true;
         
         //Terminando el ciclo agregamos al doctor
          String insert = "INSERT INTO " + Medico.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -48,6 +48,7 @@ public class IngresoMedico extends Ingreso {
              
         } catch (Exception e) {
              System.out.println("Error: " + e.getMessage());
+             comprobacion = false;
         }
         
         //Con el siguiente ciclo añadimos las especialidades del médico
@@ -63,12 +64,18 @@ public class IngresoMedico extends Ingreso {
                 preSt2.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Error " + e.getMessage());
+                comprobacion = false;
             }
             
         }
         
+        return comprobacion;
         
-        
+    }
+
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
