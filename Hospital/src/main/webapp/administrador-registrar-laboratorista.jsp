@@ -35,22 +35,22 @@
                         <div class="form-froup mx-sm-5 pb-5">
                             
                             <label for="codigo">Código</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Código" name="codigo"/>
+                            <input type="text" class="form-control" placeholder="Ingrese Código" name="codigo" required/>
                             <br>
                             <label for="password">Contraseña (provisional):</label>
-                            <input type="password" class="form-control" name="password"/>
+                            <input type="password" class="form-control" name="password" required/>
                             <br>
                             <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre"/>
+                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" required/>
                             <br>
                             <label for="colegiado">Número de Registro:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese No. de Registro Ante el Ministrio" name="registro"/>
+                            <input type="text" class="form-control" placeholder="Ingrese No. de Registro Ante el Ministrio" name="registro" required/>
                             <br>
                             <label for="dpi">DPI:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi"/>
+                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi" required/>
                             <br>
                             <label for="telefono">Teléfono:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Teléfono" name="telefono"/>
+                            <input type="number" class="form-control" placeholder="Ingrese Teléfono" name="telefono" required/>
                             
                         </div>
                         
@@ -62,21 +62,21 @@
                         
                             <br>
                             <label for="correo">Correo Electrónico:</label>
-                            <input type="email" class="form-control" placeholder="Ej: correo@anfield.com" name="correo"/>
+                            <input type="email" class="form-control" placeholder="Ej: correo@anfield.com" name="correo" required/>
                             <br>
                             <label for="horarioEntrada">Examen a realizar</label>
-                            <input type="text" class="form-control" placeholder="Código del Examen que Realizará" name="examen"/>
+                            <input type="text" class="form-control" placeholder="Código del Examen que Realizará" name="examen" required/>
                             <br> 
                             <label for="dias">Dias de Trabajo:</label>
                             <br>
                             <div>
-                                <input type="checkbox" id="Lunes" value="Lunes" name="lunes"/><label for="Lunes">&nbsp;Lunes</label><br>
-                                <input type="checkbox" id="Martes" value="Lunes" name="martes"/><label for="Martes">&nbsp;Martes</label><br>
-                                <input type="checkbox" id="Miercoles" value="Lunes" name="miercoles"/><label for="Miercoles">&nbsp;Miércoles</label><br>
-                                <input type="checkbox" id="Jueves" value="Lunes" name="jueves"/><label for="Jueves">&nbsp;Jueves</label><br>
-                                <input type="checkbox" id="Viernes" value="Lunes" name="viernes"/><label for="Viernes">&nbsp;Viernes</label><br>
-                                <input type="checkbox" id="Sabado" value="Lunes" name="sabado"/><label for="Sabado">&nbsp;Sábado</label><br>
-                                <input type="checkbox" id="Domingo" value="Lunes" name="domingo"/><label for="Domingo">&nbsp;Domingo</label><br>
+                                <input type="checkbox" id="Lunes" value="true" name="lunes"/><label for="Lunes">&nbsp;Lunes</label><br>
+                                <input type="checkbox" id="Martes" value="true" name="martes"/><label for="Martes">&nbsp;Martes</label><br>
+                                <input type="checkbox" id="Miercoles" value="true" name="miercoles"/><label for="Miercoles">&nbsp;Miércoles</label><br>
+                                <input type="checkbox" id="Jueves" value="true" name="jueves"/><label for="Jueves">&nbsp;Jueves</label><br>
+                                <input type="checkbox" id="Viernes" value="true" name="viernes"/><label for="Viernes">&nbsp;Viernes</label><br>
+                                <input type="checkbox" id="Sabado" value="true" name="sabado"/><label for="Sabado">&nbsp;Sábado</label><br>
+                                <input type="checkbox" id="Domingo" value="true" name="domingo"/><label for="Domingo">&nbsp;Domingo</label><br>
                             </div>
                             <br>
                             <label for="button">(Verifique que los datos sean correctos)</label>

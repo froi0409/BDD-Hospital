@@ -60,13 +60,13 @@ public class RegistroMedico extends HttpServlet {
         medico.setFecha(fecha);
         
         IngresoMedico ingresador = new IngresoMedico(medico);
-        ingresador.ingresoNormal(Conexion.getConnection());
+        if (ingresador.ingresoNormal(Conexion.getConnection())) {
         
-        String codigoMedico = request.getParameter("codigo");
-        
-        request.getSession().setAttribute("codigoMedico", codigoMedico);
-        request.getRequestDispatcher("administrador-registrar-medico-especialidades.jsp").forward(request, response);
-        
+            String codigoMedico = request.getParameter("codigo");
+
+            request.getSession().setAttribute("codigoMedico", codigoMedico);
+            request.getRequestDispatcher("administrador-registrar-medico-especialidades.jsp").forward(request, response);
+        }
     }
 
 }

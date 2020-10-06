@@ -59,9 +59,9 @@ public class RegistroLaboratorista extends HttpServlet {
         laboratorista.setPassword(request.getParameter("password"));
         laboratorista.setCodigoExamen(request.getParameter("examen"));
         
+        //no verifica si el día es true o false, aquí te quedaste
         System.out.println(Boolean.parseBoolean(request.getParameter("lunes")));
-        
-        System.out.println(Boolean.parseBoolean(request.getParameter("lunes")));
+        System.out.println(Boolean.parseBoolean(request.getParameter("martes")));
         
         dias.setLunes(Boolean.parseBoolean(request.getParameter("lunes")));
         dias.setMartes(Boolean.parseBoolean(request.getParameter("martes")));
@@ -72,7 +72,16 @@ public class RegistroLaboratorista extends HttpServlet {
         dias.setDomingo(Boolean.parseBoolean(request.getParameter("domingo")));
         
         IngresoLaboratorista ingresador = new IngresoLaboratorista(laboratorista,dias);
-        ingresador.ingresoNormal(Conexion.getConnection());
+        if (ingresador.ingresoNormal(Conexion.getConnection())) {
+            
+            request.setAttribute("mensaje", "Laboratorista registrado con éxito");
+            request.getRequestDispatcher("inicio-administrador.jsp").forward(request, response);
+            
+        } else {
+            
+            
+            
+        }
         
     }
 
