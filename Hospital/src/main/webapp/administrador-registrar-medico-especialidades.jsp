@@ -39,12 +39,12 @@
 
                             <div class="form-group mx-sm-5 pb-3" align="center">
                                 <br>
-                                <input type="submit" class="btn btn-outline-info" value="Agregar Especialidad"/>
+                                <input type="submit" class="btn btn-outline-info" value="Agregar Especialidad" required/>
                             </div>
                         </form>
                         <div class="form-group mx-sm-5 pb-5">
                             <form action="ConfirmarRegistroMedico" method="POST">
-                                <input type="submit" class="btn btn-info btn-block" value="Confirmar Especialidades"/>
+                                <input type="submit" class="btn btn-info btn-block" value="Confirmar Especialidades" required/>
                             </form>
                         </div>
 
