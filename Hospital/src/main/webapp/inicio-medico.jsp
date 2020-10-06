@@ -10,14 +10,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="links.html"%>
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
+        <%@include file="medico-cabecera.html"%>
+        <%@include file="medico-barra-herramientas.html"%>
+        
+        
+        
+        
+        <%@include file="scripts.html"%>
     </body>
 </html>
 <%
-    if (request.getSession().getAttribute("codigo") == null || request.getSession().getAttribute("tipoSesion") != Medico.NOMBRE_TABLA) {
+    if (request.getSession().getAttribute("codigo") == null || !request.getSession().getAttribute("tipoSesion").equals(Medico.NOMBRE_TABLA)) {
         request.getSession().invalidate();
         response.sendRedirect("inicio-sesion.jsp");
     }
