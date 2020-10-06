@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="entidades.Administrador"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +18,15 @@
         <%@include file = "administrador-cabecera.html" %>
         <%@include file = "administrador-barra-herramientas.html" %>
         
-        
+        <c:choose>
+            <c:when test="${not empty mensaje}">
+                <div class="container" style="margin-top: 30px">
+                <div class="alert alert-info" role="alert" align="center">
+                    ${mensaje}
+                </div>
+            </div>
+            </c:when>
+        </c:choose>
         
         <%@include file = "scripts.html"%>
     </body>

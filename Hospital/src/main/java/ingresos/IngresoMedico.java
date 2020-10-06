@@ -10,6 +10,7 @@ import entidades.Especialidad;
 import entidades.Medico;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -62,6 +63,7 @@ public class IngresoMedico extends Ingreso {
                 preSt2.setString(2, element.getNombre());
                 
                 preSt2.executeUpdate();
+                
             } catch (Exception e) {
                 System.out.println("Error " + e.getMessage());
                 comprobacion = false;
@@ -75,7 +77,31 @@ public class IngresoMedico extends Ingreso {
 
     @Override
     public boolean ingresoNormal(Connection connection) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String insert = "INSERT INTO " + Medico.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(insert)) {
+            
+            preSt.setString(1, medico.getCodigo());
+            preSt.setString(2, medico.getPassword());
+            preSt.setString(3, medico.getNombre());
+            preSt.setString(4, medico.getColegiado());
+            preSt.setString(5, medico.getDpi());
+            preSt.setString(6, medico.getTelefono());
+            preSt.setString(7, medico.getCorreo());
+            preSt.setString(8, medico.getHorarioInicio());
+            preSt.setString(9, medico.getHorarioFin());
+            preSt.setString(10, medico.getFecha());
+            
+            preSt.executeUpdate();
+            
+            return true;
+            
+        } catch (SQLException e) {
+            System.out.println("Error Ingreso Medico: " + e.getMessage());
+            return false;
+        }
+        
     }
     
     

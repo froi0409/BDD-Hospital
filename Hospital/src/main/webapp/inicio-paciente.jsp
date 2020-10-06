@@ -43,7 +43,7 @@
         <c:when test="${not empty mensaje}">
             
             <div class="container" style="margin-top: 30px">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-info" role="alert" align="center">
                     ${mensaje}
                 </div>
             </div>

@@ -5,10 +5,15 @@
  */
 package servletsAnalizadores;
 
+import analizadores.Conexion;
 import entidades.Medico;
+import ingresos.IngresoMedico;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +40,13 @@ public class RegistroMedico extends HttpServlet {
             throws ServletException, IOException {
         
         //Aún debes agregar las restrcciones que tiene el ingreso de datos
-        
-        Date fecha = new Date();
+
         Medico medico = new Medico();
+        Calendar c = new GregorianCalendar();
+        String dia = Integer.toString(c.get(Calendar.DATE));
+        String mes = Integer.toString(c.get(Calendar.MONTH));
+        String año = Integer.toString(c.get(Calendar.YEAR));
+        String fecha = año + "-" + mes + "-" + dia;
         
         medico.setCodigo(request.getParameter("codigo"));
         medico.setPassword(request.getParameter("password"));
@@ -48,7 +57,15 @@ public class RegistroMedico extends HttpServlet {
         medico.setCorreo(request.getParameter("correo"));
         medico.setHorarioInicio(request.getParameter("horarioEntrada"));
         medico.setHorarioFin(request.getParameter("horarioSalida"));
-        medico.setFecha(fecha.toString());
+        medico.setFecha(fecha);
+        
+        IngresoMedico ingresador = new IngresoMedico(medico);
+        ingresador.ingresoNormal(Conexion.getConnection());
+        
+        String codigoMedico = request.getParameter("codigo");
+        
+        request.getSession().setAttribute("codigoMedico", codigoMedico);
+        request.getRequestDispatcher("administrador-registrar-medico-especialidades.jsp").forward(request, response);
         
     }
 
