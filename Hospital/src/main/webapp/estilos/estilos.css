@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : froi-pc
 */
 body{
-    background: url("../images/fondo.jpg") no-repeat;
+    background: white;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -31,4 +31,10 @@ body{
     background: #f55d3e;
     color:#fff;
     border:0px solid #fff;
+}
+.navigation {
+    text-decoration: none;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: white;
 }

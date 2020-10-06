@@ -5,6 +5,7 @@
  */
 package ingresos;
 
+import analizadores.Conexion;
 import entidades.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +23,7 @@ public class IngresoPaciente extends Ingreso{
     }
 
     @Override
-    public void ingresoArchivo(Connection connection) {
+    public boolean ingresoArchivo(Connection connection) {
         
         String insert = "INSERT INTO " + Paciente.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
         
@@ -41,10 +42,20 @@ public class IngresoPaciente extends Ingreso{
             
             preSt.executeUpdate();
             
+            IngresoPaciente ingresador = new IngresoPaciente(paciente);
+            
+            return true;
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return false;
         }
     
+    }
+
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        return ingresoArchivo(connection);
     }
     
 }

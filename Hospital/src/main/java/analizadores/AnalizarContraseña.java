@@ -18,6 +18,11 @@ import org.apache.commons.codec.binary.Base64;
  */
 public class AnalizarContraseña {
     
+    /**
+     * Encripta una cadena de caracteres, esto con proposito de obtener seguridad en los datos
+     * @param password Cadena de caracteres que se desesa encriptar
+     * @return Cadena de caracteres encriptada
+     */
     public String encriptar(String password){
         String secretKey = "labipc2"; //llave para encriptar datos
         String base64EncryptedString = "";
@@ -42,8 +47,13 @@ public class AnalizarContraseña {
         return base64EncryptedString;
     }
     
+    /**
+     * Desencripta una cadena de caracteres encripatada con el método encriptar de esta misma clase
+     * @param password Cadena a desencriptar
+     * @return Cadena de caracteres desencriptada
+     */
     public String desencriptar(String password){
-        String secretKey = "qualityinfosolutions"; //llave para encriptar datos
+        String secretKey = "labipc2"; //llave para encriptar datos
         String base64EncryptedString = "";
 
         try {

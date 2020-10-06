@@ -23,7 +23,7 @@ public class IngresoCitaMedica extends Ingreso{
     }
 
     @Override
-    public void ingresoArchivo(Connection connection) {
+    public boolean ingresoArchivo(Connection connection) {
         
         String insert = "INSERT INTO " + CitaMedica.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?)";
         String nombreEspecialidad = "SELECT D.nombre_especialidad FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico AND codigo_medico = ?";
@@ -53,8 +53,42 @@ public class IngresoCitaMedica extends Ingreso{
             
             preSt.executeUpdate();
             
+            return true;
+            
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+        
+    }
+
+    /**
+     * Ingresa una cita médica con datos completos a la base de datos
+     * @param connection Conexión de la base de datos
+     * @return Retorna verdadero si la conexión se ha realizado con éxito, de lo contrario retorna false
+     */
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        
+        String insert = "INSERT INTO " + CitaMedica.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?)";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(insert)) {
+            
+            preSt.setString(1, cita.getCodigo());
+            preSt.setString(2, cita.getFecha());
+            preSt.setString(3, cita.getHora());
+            preSt.setDouble(4, cita.getCosto());
+            preSt.setString(5, cita.getCodigoMedico());
+            preSt.setString(6, cita.getCodigoPaciente());
+            preSt.setString(7, cita.getNombreEspecialidad());
+
+            preSt.executeUpdate();
+            
+            return true;
+            
+        } catch (Exception e) {
+            System.out.println("Error ingreso cita: " + e.getMessage());
+            return false;
         }
         
     }

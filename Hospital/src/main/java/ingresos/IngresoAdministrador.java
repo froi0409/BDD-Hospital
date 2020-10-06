@@ -22,7 +22,7 @@ public class IngresoAdministrador extends Ingreso{
     }
     
     @Override
-    public void ingresoArchivo(Connection connection){
+    public boolean ingresoArchivo(Connection connection){
         
         String insert = "INSERT INTO " + Administrador.NOMBRE_TABLA + " VALUES (?,?,?,?)";
         
@@ -37,10 +37,18 @@ public class IngresoAdministrador extends Ingreso{
             
             preSt.executeUpdate();
             
+            return true;
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return false;
         }
         
+    }
+
+    @Override
+    public boolean ingresoNormal(Connection connection) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
