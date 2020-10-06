@@ -38,3 +38,7 @@ body{
     background-color: transparent !important;
     color: white;
 }
+.barraNavegacion {
+    color: white;
+    list-style: none;
+}

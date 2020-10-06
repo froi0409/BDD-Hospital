@@ -10,17 +10,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file = "links.html"%>
         <title>Admin</title>
     </head>
     <body>
-        <h1>SOY ADMIN B)</h1>
+        <%@include file = "administrador-cabecera.html" %>
+        <%@include file = "administrador-barra-herramientas.html" %>
+        
+        
+        
+        <%@include file = "scripts.html"%>
     </body>
 </html>
-<%
-    if (request.getSession().getAttribute("codigo") == null || request.getSession().getAttribute("tipoSesion") != Administrador.NOMBRE_TABLA) {
-        request.getSession().removeAttribute("codigo");
-        request.getSession().removeAttribute("tipoSesion");
-        request.getSession().invalidate();
-        response.sendRedirect("inicio-sesion.jsp");
-    }
-%>
