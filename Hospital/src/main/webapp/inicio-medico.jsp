@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@page import="entidades.Medico"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,3 +16,9 @@
         <h1>Hello World!</h1>
     </body>
 </html>
+<%
+    if (request.getSession().getAttribute("codigo") == null || request.getSession().getAttribute("tipoSesion") != Medico.NOMBRE_TABLA) {
+        request.getSession().invalidate();
+        response.sendRedirect("inicio-sesion.jsp");
+    }
+%>

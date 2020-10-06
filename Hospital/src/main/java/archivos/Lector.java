@@ -27,6 +27,13 @@ public class Lector {
     private ArrayList<Estructura> atributos = new ArrayList<Estructura>();
     private int cont = 0;
     
+    /**
+     * Identifica los valores de los 'hijos' de cada nodo principal
+     * @param path Ruta del archivo xml (normalmente denro del servidor)
+     * @param tagName Nombre de la etiqueta que define al nodo
+     * @param lector Lector específico de una entidad (normalmente, la entidad debe existir dentro de la base de datos)
+     * @param entidad Entidad a analizar (normalmente, la entidad debe existir dentro de la base de datos)
+     */
     public void leerTag(String path, String tagName, LectorArchivo lector, Entidad entidad){
         
         try {
@@ -73,6 +80,10 @@ public class Lector {
             
     }
 
+    /**
+     * Obtenemos los datos de cada 'hijo' que posee el nodo
+     * @return 
+     */
     public ArrayList<Estructura> getAtributos() {
         return atributos;
     }

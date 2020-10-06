@@ -35,6 +35,7 @@ public class CrearCita extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        //Verificamos que exista una sesión en el sistema
         if (request.getSession().getAttribute("codigo") == null) {
             response.sendRedirect("inicio-sesion.jsp");
         }
@@ -58,6 +59,9 @@ public class CrearCita extends HttpServlet {
         request.getSession().removeAttribute("costo");
         request.getSession().removeAttribute("codigoMedico");
         request.getSession().removeAttribute("especialidad");
+        
+        request.setAttribute("mensaje", "Se ha agendado su cita médica con éxito");
+        request.getRequestDispatcher("inicio-paciente.jsp").forward(request, response);
         
     }
 

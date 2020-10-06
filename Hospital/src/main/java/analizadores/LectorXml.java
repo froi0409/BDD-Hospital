@@ -16,6 +16,10 @@ import java.util.logging.Logger;
  */
 public class LectorXml {
     
+    /**
+     * Lee un archivo xml con la estructura definida por el hospital
+     * @param path Ruta que el archivo tiene (normalmente dentro del servidor)
+     */
     public void read(String path){
         try {
             

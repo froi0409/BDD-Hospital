@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@page import="entidades.Paciente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +39,7 @@
         
         <%@include file = "paciente-barra-herramientas.html" %>
         
+        <!<!-- Se define si la página muestra un mensaje o la información de la solicitud de la cita médica -->
         <c:choose>
             <c:when test="${aprobacion}">
                 
@@ -79,6 +81,9 @@
                     <div class="alert alert-danger" role="alert">
                         ${mensaje}
                     </div>
+                    <div style="margin-top: 30px" align="center">
+                        <a href="paciente-crear-cita.jsp" style="button" class="btn btn-outline-danger">Regresar</a>
+                    </div>
                 </div>
                 
             </c:otherwise>
@@ -88,4 +93,10 @@
         <%@include file = "scripts.html"%>
     
 </html>
+<%
+    if (request.getSession().getAttribute("codigo") == null || request.getSession().getAttribute("tipoSesion") != Paciente.NOMBRE_TABLA) {
+        request.getSession().invalidate();
+        response.sendRedirect("inicio-sesion.jsp");
+    }
+%>
 

@@ -4,6 +4,8 @@
     Author     : froi-pc
 --%>
 
+<%@page import="entidades.Paciente"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -36,6 +38,33 @@
         
         <%@include file = "paciente-barra-herramientas.html"%>
         
+    <c:choose>
+        
+        <c:when test="${not empty mensaje}">
+            
+            <div class="container" style="margin-top: 30px">
+                <div class="alert alert-info" role="alert">
+                    ${mensaje}
+                </div>
+            </div>
+            
+        </c:when>
+        <c:otherwise>
+            
+        </c:otherwise>
+    </c:choose>
+        
         <%@include file = "scripts.html"%>
     </body>
 </html>
+<%
+    System.out.println(session.getAttribute("tipoSesion") + "   " + Paciente.NOMBRE_TABLA);
+    System.out.println(session.getAttribute("codigo"));
+    
+    if (session.getAttribute("tipoSesion") != Paciente.NOMBRE_TABLA || session.getAttribute("codigo") == null) {
+        System.out.println(session.getAttribute("tipoSesion") + "   " + Paciente.NOMBRE_TABLA);
+        System.out.println(session.getAttribute("codigo"));
+        request.getSession().invalidate();
+        response.sendRedirect("inicio-sesion.jsp");
+    }
+%>

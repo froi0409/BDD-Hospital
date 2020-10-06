@@ -41,8 +41,7 @@ public class BusquedaMedico {
                 Date solicitada = new SimpleDateFormat("HH:mm").parse(hora);
 
                 System.out.println("E: " + entrada + " S: " + salida);
-
-                if(solicitada.after(entrada) && solicitada.before(salida)) {
+                if((solicitada.after(entrada) && solicitada.before(salida)) || solicitada.equals(entrada) ||solicitada.equals(salida)) {
                     return true;
                 } else {
                     return false;

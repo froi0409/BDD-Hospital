@@ -25,6 +25,10 @@ public class LectorAdministrador extends LectorArchivo{
         administrador = new Administrador();
     }
 
+    /**
+     * Convierte un ArrayList de tipo String en un objeto de tipo Administrador
+     * @param atributos ArrayList de tipo String que contiene los atributos que debe tener un Administrador.
+     */
     @Override
     public void convertToEntidad(ArrayList<Estructura> atributos) {
         

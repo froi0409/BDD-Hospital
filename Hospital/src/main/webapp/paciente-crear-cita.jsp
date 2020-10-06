@@ -70,7 +70,7 @@
                             <label for="hora">Hora de la Cita (HH:00): </label>
                             <select name="hora" class="btn-block">
                                 <%
-                                for(int i = 8; i < 23; i++) {
+                                for(int i = 6; i < 23; i++) {
                                     out.println("<option>" + i + ":00</option>");
                                 }
                                 %>
