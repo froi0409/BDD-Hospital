@@ -51,17 +51,17 @@
                             <label for="medico">Codigo del Médico:</label>
                             <input type="text" class="form-control" placeholder="Ingrese Codigo del Médico" name="medico"/> 
                             <br>
-                            <!<!-- busca las especialidades -->
+                            <!-- busca las especialidades -->
                             <label for="especialidad">Especialidad de la consulta:</label>
                             <select name="especialidad" class="btn-block">
                                 <%
-                                BusquedaEspecialidad find = new BusquedaEspecialidad();
-                                
-                                
-                                for (String element : find.all(Conexion.getConnection())) {
-                                    out.println("<option>" + element + "</option>");
-                                }
-                            %>
+                                    BusquedaEspecialidad find = new BusquedaEspecialidad();
+
+
+                                    for (String element : find.all(Conexion.getConnection())) {
+                                        out.println("<option>" + element + "</option>");
+                                    }
+                                %>
                             </select>
                             <br>                            
                             <label for="fecha">Fecha de la Cita: </label>
@@ -70,9 +70,9 @@
                             <label for="hora">Hora de la Cita (HH:00): </label>
                             <select name="hora" class="btn-block">
                                 <%
-                                for(int i = 6; i < 23; i++) {
-                                    out.println("<option>" + i + ":00</option>");
-                                }
+                                    for(int i = 6; i < 23; i++) {
+                                        out.println("<option>" + i + ":00</option>");
+                                    }
                                 %>
                             </select>
                                 

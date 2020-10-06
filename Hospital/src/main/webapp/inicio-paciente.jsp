@@ -43,7 +43,7 @@
         <c:when test="${not empty mensaje}">
             
             <div class="container" style="margin-top: 30px">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-info" role="alert" align="center">
                     ${mensaje}
                 </div>
             </div>
@@ -57,14 +57,4 @@
         <%@include file = "scripts.html"%>
     </body>
 </html>
-<%
-    System.out.println(session.getAttribute("tipoSesion") + "   " + Paciente.NOMBRE_TABLA);
-    System.out.println(session.getAttribute("codigo"));
-    
-    if (session.getAttribute("tipoSesion") != Paciente.NOMBRE_TABLA || session.getAttribute("codigo") == null) {
-        System.out.println(session.getAttribute("tipoSesion") + "   " + Paciente.NOMBRE_TABLA);
-        System.out.println(session.getAttribute("codigo"));
-        request.getSession().invalidate();
-        response.sendRedirect("inicio-sesion.jsp");
-    }
-%>
+
