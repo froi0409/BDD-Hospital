@@ -1,6 +1,6 @@
 <%-- 
-    Document   : administrador-registrar-medico
-    Created on : 5/10/2020, 23:45:01
+    Document   : administrador-registrar-laboratorista
+    Created on : 6/10/2020, 06:42:11
     Author     : froi-pc
 --%>
 
@@ -10,10 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="links.html" %>
-        <title>Registrar Médico</title>
+        <title>Registrar Laboratorista</title>
     </head>
     <body>
-        
         <%@include file="administrador-cabecera.html" %>
         <%@include file="administrador-barra-herramientas.html" %>
         
@@ -44,13 +43,14 @@
                             <label for="nombre">Nombre:</label>
                             <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre"/>
                             <br>
-                            <label for="colegiado">Colegiado</label>
-                            <input type="text" class="form-control" placeholder="Ingrese No. de Colegiado" name="colegiado"/>
+                            <label for="colegiado">Número de Registro:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese No. de Registro Ante el Ministrio" name="registro"/>
                             <br>
                             <label for="dpi">DPI:</label>
                             <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi"/>
                             <br>
-
+                            <label for="telefono">Teléfono:</label>
+                            <input type="number" class="form-control" placeholder="Ingrese Teléfono" name="telefono"/>
                             
                         </div>
                         
@@ -60,33 +60,27 @@
                         
                         <div class="form-froup mx-sm-5 pb-5">
                         
-                            
-                            <label for="telefono">Teléfono:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Teléfono" name="telefono"/>
                             <br>
                             <label for="correo">Correo Electrónico:</label>
                             <input type="email" class="form-control" placeholder="Ej: correo@anfield.com" name="correo"/>
                             <br>
-                            <label for="horarioEntrada">Horario de Entrada:</label>
-                            <select name="horarioEntrada" class="btn-block">
-                            <%
-                                for(int i = 6; i < 23; i++) {
-                                    out.println("<option>" + i + ":00</option>");
-                                }
-                            %>
-                            </select>
+                            <label for="horarioEntrada">Examen a realizar</label>
+                            <input type="text" class="form-control" placeholder="Código del Examen que Realizará" name="examen"/>
                             <br> 
-                            <label for="horarioSalida">Horario de Salida:</label>
-                            <select name="horarioSalida" class="btn-block">
-                            <%
-                                for(int i = 6; i < 23; i++) {
-                                    out.println("<option>" + i + ":00</option>");
-                                }
-                            %>
-                            </select>
+                            <label for="dias">Dias de Trabajo:</label>
+                            <br>
+                            <div>
+                                <input type="checkbox" id="Lunes" value="Lunes" name="lunes"/><label for="Lunes">&nbsp;Lunes</label><br>
+                                <input type="checkbox" id="Martes" value="Lunes" name="martes"/><label for="Martes">&nbsp;Martes</label><br>
+                                <input type="checkbox" id="Miercoles" value="Lunes" name="miercoles"/><label for="Miercoles">&nbsp;Miércoles</label><br>
+                                <input type="checkbox" id="Jueves" value="Lunes" name="jueves"/><label for="Jueves">&nbsp;Jueves</label><br>
+                                <input type="checkbox" id="Viernes" value="Lunes" name="viernes"/><label for="Viernes">&nbsp;Viernes</label><br>
+                                <input type="checkbox" id="Sabado" value="Lunes" name="sabado"/><label for="Sabado">&nbsp;Sábado</label><br>
+                                <input type="checkbox" id="Domingo" value="Lunes" name="domingo"/><label for="Domingo">&nbsp;Domingo</label><br>
+                            </div>
                             <br>
                             <label for="button">(Verifique que los datos sean correctos)</label>
-                            <input type="submit" class="btn btn-info ingresar btn-block" value="Registrar Médico"/>
+                            <input type="submit" class="btn btn-info ingresar btn-block" value="Registrar Laboratorista"/>
                         </div>
                             
                     </div>

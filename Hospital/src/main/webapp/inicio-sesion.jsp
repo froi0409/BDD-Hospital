@@ -40,7 +40,7 @@
         <div class="container">
             
             <form action="inicio.jsp" method="POST">
-                <input type="submit" class="btn btn-outline-primary" value="Regresar" />
+                <input type="submit" class="btn btn-outline-info" value="Regresar" />
             </form>
             
         </div>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="form-group mx-sm-5 pb-5"><!-- comment -->
 
-                            <input type="submit" class="btn btn-primary ingresar btn-block" value="Ingresar"/>
+                            <input type="submit" class="btn btn-info ingresar btn-block" value="Ingresar"/>
 
                         </div>
 
