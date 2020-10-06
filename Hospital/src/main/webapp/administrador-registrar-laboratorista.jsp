@@ -17,7 +17,7 @@
         <%@include file="administrador-barra-herramientas.html" %>
         
         <!-- Creamos la ventana de registro -->
-        <form action="RegistroMedico" method="POST">
+        <form action="RegistroLaboratorista" method="POST">
             
             <div class="pt-2">
                &nbsp;
