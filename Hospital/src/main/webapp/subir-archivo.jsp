@@ -49,7 +49,7 @@
                         </div>
                         
                         <div class="form-group mx-sm-4 pb-5">
-                            <input type="submit" class="btn btn-primary ingresar btn-block" />
+                            <input type="submit" class="btn btn-info ingresar btn-block" />
                         </div>
                         
                     </div>
