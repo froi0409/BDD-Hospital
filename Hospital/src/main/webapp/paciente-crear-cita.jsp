@@ -36,10 +36,10 @@
 
         </div>
         
-        <!<!-- Incluimos la barra de herramientas -->
+        <!-- Incluimos la barra de herramientas -->
         <%@include file = "paciente-barra-herramientas.html"%>
         
-        <!<!-- Creamos la ventana de creación de cita -->
+        <!-- Creamos la ventana de creación de cita -->
         <form action="ConfirmarCita" method="POST">
             <div class="container"> 
                 <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->

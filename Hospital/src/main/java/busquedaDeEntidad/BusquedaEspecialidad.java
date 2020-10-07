@@ -5,6 +5,7 @@
  */
 package busquedaDeEntidad;
 
+import entidades.Descripcion;
 import entidades.Especialidad;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +48,36 @@ public class BusquedaEspecialidad {
         }
         
         return lista;
+    }
+    
+    /**
+     * Método que sirve para obtener todas las especialidades que tiene un médico en específico dentro de la base de datos
+     * @param connection Conexión de la base de datos
+     * @param codigoMedico Codigo del médico, del que se están consultando las especialidades
+     * @return ArrayList tipo String que contiene el nombre de las especialidades que tiene un médico en específico
+     */
+    public ArrayList<String> especialidadMedico(Connection connection, String codigoMedico) {
+        
+        String query = "SELECT " + Descripcion.NOMBRE_ESPECIALIDAD + " FROM " + Descripcion.NOMBRE_TABLA + " WHERE " + Descripcion.CODIGO_MEDICO + " = ?";
+        ArrayList<String> lista = new ArrayList<String>();
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoMedico);
+            
+            ResultSet result = preSt.executeQuery();
+            
+            while(result.next()) {
+                lista.add(result.getString(1));
+            }
+            
+            return lista;
+            
+        } catch (Exception e) {
+            System.out.println("Error Especialidad Medico: " + e.getMessage());
+            return null;
+        }
+        
     }
     
 }

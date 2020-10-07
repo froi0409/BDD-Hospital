@@ -9,7 +9,6 @@ import analizadores.AnalizadorDeDatos;
 import analizadores.AnalizarContraseña;
 import analizadores.Conexion;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,6 +66,9 @@ public class AnalizadorDatosLogin extends HttpServlet {
             request.getRequestDispatcher(rutaJsp).forward(request, response);
             
         } else {
+            
+            request.setAttribute("mensaje", "Datos incorrectos, verifique que los TRES datos sean correctos");
+            request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
             
         }
         //processRequest(request, response);

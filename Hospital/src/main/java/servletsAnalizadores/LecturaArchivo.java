@@ -35,12 +35,12 @@ public class LecturaArchivo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path;
-       ArchivoDeEntrada lector = new ArchivoDeEntrada(request,"ruta"); //Enviamos al constructor la propiedad request
-       path = lector.getPath();//obtenemos el path del archivo en el servidor
+        ArchivoDeEntrada lector = new ArchivoDeEntrada(request,"ruta"); //Enviamos al constructor la propiedad request
+        path = lector.getPath();//obtenemos el path del archivo en el servidor
        
-       LectorXml lectxml = new LectorXml();
-       lectxml.read(path);
-       request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
+        LectorXml lectxml = new LectorXml();
+        lectxml.read(path);
+        request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
        
     }
 
