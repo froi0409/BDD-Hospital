@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="analizadores.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -58,15 +59,18 @@
                     </div>
                 </div>
             <%   
-                } else if(request.getParameter("mensaje") != null) {
+                } else {
             %>
+        <c:choose>
+            <c:when test="${not empty mensaje}">
                 <br><br>
-            
                 <div class="container">
-                    <div class="alert alert-warning" role="alert" align="center">
+                    <div class="alert alert-danger" role="alert" align="center">
                         ${mensaje}
                     </div>
                 </div>
+            </c:when>
+        </c:choose>
             <%
                 System.out.println( "mensaje" + request.getParameter("mensaje"));
                 }

@@ -31,12 +31,15 @@ public class BusquedaMedico {
         
         String query = "SELECT " + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + " FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
         
+        System.out.println(query);
+        
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
             
             preSt.setString(1, codigoMedico);
             
             ResultSet result = preSt.executeQuery();
             if(result.next()) { //Encontramos el horario
+                
                 Date entrada = new SimpleDateFormat("HH:mm").parse(result.getString(1));
                 Date salida = new SimpleDateFormat("HH:mm").parse(result.getString(2));
                 Date solicitada = new SimpleDateFormat("HH:mm").parse(hora);
@@ -59,9 +62,15 @@ public class BusquedaMedico {
         
     }
     
+    /**
+     * Obtiene el intervalo de tiempo en el que trabaja un médico en específico
+     * @param connection Conexión de la base de datos
+     * @param codigoMedico Código del médico a consultar horario
+     * @return ArrayList de tipo String, el cuál contiene cada hora (en punto) que se encuentra dentro del intervalo cerrado en el que trabaja el médico consultado
+     */
     public ArrayList<String> horarioMedico(Connection connection, String codigoMedico) {
         
-        String query = "SELEC " + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + " FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
+        String query = "SELECT " + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + " FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
         ArrayList<String> lista = new ArrayList<String>();
         
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
@@ -71,7 +80,19 @@ public class BusquedaMedico {
             ResultSet result = preSt.executeQuery();
             if(result.next()) {
                 
-                
+                for (int i = 6; i <= 22; i++) {
+                    
+                    String hora = i + ":00";
+                    Date horaConvertida = new SimpleDateFormat("HH:mm").parse(hora);
+                    Date entrada = new SimpleDateFormat("HH:mm").parse(result.getString(1));
+                    Date salida = new SimpleDateFormat("HH:mm").parse(result.getString(2));
+                    
+                    
+                    if ((horaConvertida.after(entrada)) && horaConvertida.before(salida) || horaConvertida.equals(entrada) || horaConvertida.equals(salida)) {
+                        lista.add(hora);
+                    }
+                    
+                }
                 
                 return lista;
                 

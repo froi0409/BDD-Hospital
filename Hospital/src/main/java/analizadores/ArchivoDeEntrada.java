@@ -44,11 +44,11 @@ public class ArchivoDeEntrada {
             Part filePart = request.getPart(parametroFileHtml); //Obtenemos lo que nos envía el input file de html
             String nombreArchivo = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); //Obtenemos el nombre del archivo
             InputStream fileContent = filePart.getInputStream(); //Obtenemos elarchivo
-            OutputStream salida = new FileOutputStream(nombreArchivo); //Reescribimos el archivo
+            OutputStream salida = new FileOutputStream("Recursos/" + nombreArchivo); //Reescribimos el archivo
             fileContent.transferTo(salida); //Convertimos el archivo de entrada al archivo reescrito
             File file = Paths.get(filePart.getSubmittedFileName()).toFile(); //Creamos el archivo en el servidot
 
-            path = file.getAbsolutePath().replace("/" + file.getName(), "") + "/" + nombreArchivo; //obtenemos el path completo del archivo dentro del servidor
+            path = file.getAbsolutePath().replace("/" + file.getName(), "") + "/Recursos/" + nombreArchivo; //obtenemos el path completo del archivo dentro del servidor
 
             System.out.println(path); //Imprimimos en consola el path completo
             System.out.println(nombreArchivo);

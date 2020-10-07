@@ -6,9 +6,9 @@
 package servletsAnalizadores;
 
 import analizadores.Conexion;
+import busquedaDeEntidad.BusquedaCitaMedica;
 import busquedaDeEntidad.BusquedaPaciente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author froi-pc
  */
-@WebServlet(name = "GenerarOrden", urlPatterns = {"/GenerarOrden"})
-public class GenerarOrden extends HttpServlet {
+@WebServlet(name = "GenerarCitaMedico", urlPatterns = {"/GenerarCitaMedico"})
+public class GenerarCitaMedico extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -35,22 +35,25 @@ public class GenerarOrden extends HttpServlet {
             throws ServletException, IOException {
         
         BusquedaPaciente paciente = new BusquedaPaciente();
+        BusquedaCitaMedica citaMedica = new BusquedaCitaMedica();
         
         String codigoPaciente = request.getParameter("codigoPaciente");
-        String nombreExamen = request.getParameter("nombreExamen");
+        String codigoMedico = request.getSession().getAttribute("codigo").toString();
+        String fecha = request.getParameter("fecha");
+        String hora = request.getParameter("hora");
         
-        if (paciente.exists(Conexion.getConnection(), codigoPaciente)) {
-            
-            request.getSession().setAttribute("codigoPaciente", codigoPaciente);
-            request.getSession().setAttribute("nombreExamen", nombreExamen);
-            request.getRequestDispatcher("medico-generar-cita.jsp").forward(request, response);
-
-        } else {
-            
-            request.setAttribute("mensaje", "Error al tratar de agendar la consulta, el paciente no existe en el sistema.");
-            request.getRequestDispatcher("inicio-medico.jsp").forward(request, response);
-            
+        String error = "";
+        boolean aprobacion = true;
+        
+        if (!paciente.exists(Conexion.getConnection(), codigoPaciente)) {
+            aprobacion = false;
+            error += "El paciente ingresado no se encuentra registrado en el sistema. ";
         }
+        if (citaMedica.medicoOcupado(Conexion.getConnection(), codigoMedico, fecha, hora)) {
+            aprobacion = false;
+            error += "Usted tiene ocupado el horario en el que desea agendar la consulta. ";
+        }
+        
         
         
     }

@@ -4,6 +4,7 @@
     Author     : froi-pc
 --%>
 
+<%@page import="busquedaDeEntidad.BusquedaMedico"%>
 <%@page import="analizadores.Conexion"%>
 <%@page import="busquedaDeEntidad.BusquedaEspecialidad"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,7 +19,7 @@
         <%@include file="medico-cabecera.html" %>
         <%@include file="medico-barra-herramientas.html" %>
         
-        <form action="ConfirmarCita" method="POST">
+        <form action="GenerarCitaMedico" method="POST">
             <div class="container"> 
                 <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-4 formulario">
@@ -26,15 +27,14 @@
                             <h3>Agendar Cita</h3>
                         </div>
                         <div class="form-froup mx-sm-5 pt3">
-                            <label for="medico">Codigo del Médico:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Codigo del Médico" name="medico"/> 
+                            <label for="medico">Codigo del Paciente:</label>
+                            <input type="text" class="form-control" placeholder="Ingrese Codigo del Paciente" name="codigoPaciente"/> 
                             <br>
                             <!-- busca las especialidades -->
                             <label for="especialidad">Especialidad de la consulta:</label>
                             <select name="especialidad" class="btn-block">
                                 <%
                                     BusquedaEspecialidad find = new BusquedaEspecialidad();
-
 
                                     for (String element : find.especialidadMedico(Conexion.getConnection(), request.getSession().getAttribute("codigo").toString())) {
                                         out.println("<option>" + element + "</option>");
@@ -48,8 +48,9 @@
                             <label for="hora">Hora de la Cita (HH:00): </label>
                             <select name="hora" class="btn-block">
                                 <%
-                                    for(int i = 6; i < 23; i++) {
-                                        out.println("<option>" + i + ":00</option>");
+                                    BusquedaMedico medico = new BusquedaMedico();
+                                    for (String element : medico.horarioMedico(Conexion.getConnection(), request.getSession().getAttribute("codigo").toString())) {
+                                        out.println("<option>" + element + "</option>");
                                     }
                                 %>
                             </select>

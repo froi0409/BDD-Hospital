@@ -67,6 +67,9 @@ public class AnalizadorDatosLogin extends HttpServlet {
             
         } else {
             
+            request.setAttribute("mensaje", "Datos incorrectos, verifique que los TRES datos sean correctos");
+            request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
+            
         }
         //processRequest(request, response);
     }
