@@ -55,13 +55,13 @@
                         <div class="form-froup mx-sm-5 pb-5">
                             
                             <label for="codigo">Usuario:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Usuario" name="codigo"/>
+                            <input type="text" class="form-control" placeholder="Ingrese Usuario" name="codigo" required/>
                             <br>
                             <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control" name="password"/>
+                            <input type="password" class="form-control" name="password" required/>
                             <br>
                             <label for="nombre">Nombre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre"/>
+                            <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" required/>
                             <br>
                             <label for="sexo">Sexo:</label>
                             <select name="sexo" class="btn-block">
@@ -70,7 +70,7 @@
                             </select>
                             <br>
                             <label for="fecha">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" name="fecha"/>
+                            <input type="date" class="form-control" name="fecha" required/>
                             <br>
 
                             
@@ -83,19 +83,19 @@
                         <div class="form-froup mx-sm-5 pb-5">
                         
                             <label for="dpi">DPI:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi"/>
+                            <input type="number" class="form-control" placeholder="Ingrese Número de DPI" name="dpi" required/>
                             <br>
                             <label for="telefono">Telefono:</label>
-                            <input type="number" class="form-control" placeholder="Ingrese Teledono" name="telefono"/>
+                            <input type="number" class="form-control" placeholder="Ingrese Teledono" name="telefono" required/>
                             <br>
                             <label for="peso">Peso (Kg):</label>
-                            <input type="number" step="any" class="form-control" placeholder="Ingrese su Peso" name="peso"/>
+                            <input type="number" step="any" class="form-control" placeholder="Ingrese su Peso" name="peso" required/>
                             <br>
                             <label for="sangre">Tipo de Sangre:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese su Tipo de Sangre" name="sangre"/>
+                            <input type="text" class="form-control" placeholder="Ingrese su Tipo de Sangre" name="sangre" required/>
                             <br>
                             <label for="correo">Correo Electrónico:</label>
-                            <input type="email" class="form-control" placeholder="Ej: correo@anfield.com" name="correo"/>
+                            <input type="email" class="form-control" placeholder="Ej: correo@anfield.com" name="correo" required/>
                             <br>
                             <label for="correo">(Verifique que sus datos sean correctos)</label>
                             <input type="submit" class="btn btn-primary ingresar btn-block" value="Registrarse"/>

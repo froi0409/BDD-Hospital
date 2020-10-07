@@ -23,7 +23,7 @@ public class IngresoOrden {
     
     public boolean ingresoNormal(Connection connection) {
         
-        String insert = "INSERT INTO " + Orden.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?)";
+        String insert = "INSERT INTO " + Orden.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?)";
         
         try (PreparedStatement preSt = connection.prepareStatement(insert)) {
             
@@ -33,6 +33,8 @@ public class IngresoOrden {
             preSt.setString(4, orden.getPath());
             preSt.setString(5, orden.getFechaCreacion());
             preSt.setString(6, orden.getCodigoPaciente());
+            preSt.setString(7, orden.getCodigoMedico());
+            preSt.setBoolean(8, true);
             
             preSt.executeUpdate();
             

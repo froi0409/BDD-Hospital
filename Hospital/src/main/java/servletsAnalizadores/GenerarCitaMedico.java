@@ -98,6 +98,7 @@ public class GenerarCitaMedico extends HttpServlet {
         orden.setPath(path);
         orden.setFechaCreacion(fechaCreacion);
         orden.setCodigoPaciente(codigoPaciente);
+        orden.setCodigoMedico(codigoMedico);
         
         IngresoCitaMedica ingresadorCita = new IngresoCitaMedica(cita);
         IngresoOrden ingresadorOrden = new IngresoOrden(orden);

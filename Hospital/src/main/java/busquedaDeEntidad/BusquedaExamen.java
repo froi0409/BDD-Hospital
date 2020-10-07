@@ -66,4 +66,28 @@ public class BusquedaExamen {
         }
     }
     
+    public boolean requiereOrden(Connection connection, String nombreExamen) {
+        
+        String query = "SELECT " + Examen.ORDEN + " FROM " + Examen.NOMBRE_TABLA + " WHERE " + Examen.NOMBRE + " = ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, nombreExamen);
+            
+            ResultSet result = preSt.executeQuery();
+            result.next();
+            
+            if (result.getBoolean(1)) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error Requiere Orden: " + e.getMessage());
+            return false;
+        }
+        
+    }
+    
 }

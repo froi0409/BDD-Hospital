@@ -40,7 +40,7 @@
                             </select>
                             <br>                            
                             <label for="fecha">Fecha de la Cita: </label>
-                            <input type="date" class="form-control" name="fecha"/> 
+                            <input type="date" class="form-control" name="fecha" required/> 
                             <br>
                             <label for="hora">Hora de la Cita (HH:00): </label>
                             <select name="hora" class="btn-block">

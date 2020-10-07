@@ -16,8 +16,9 @@ public class Orden {
     public static final String CODIGO_EXAMEN = "codigo_examen";
     public static final String DESCRIPCION = "descrićion";
     public static final String FECHA_CREACION = "fecha_creacion";
-    public static final String PATH = "archivo";
     public static final String CODIGO_PACIENTE = "codigo_paciente";
+    public static final String CODIGO_MEDICO = "codigo_medico";
+    public static final String VALIDEZ = "validez";
     
     private String codigo;
     private String codigoExamen;
@@ -25,6 +26,7 @@ public class Orden {
     private String fechaCreacion;
     private String path;
     private String codigoPaciente;
+    private String codigoMedico;
 
     public String getCodigo() {
         return codigo;
@@ -72,6 +74,14 @@ public class Orden {
 
     public void setCodigoPaciente(String codigoPaciente) {
         this.codigoPaciente = codigoPaciente;
+    }
+
+    public String getCodigoMedico() {
+        return codigoMedico;
+    }
+
+    public void setCodigoMedico(String codigoMedico) {
+        this.codigoMedico = codigoMedico;
     }
     
 }

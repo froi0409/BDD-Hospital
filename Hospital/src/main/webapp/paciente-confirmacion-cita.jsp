@@ -72,10 +72,4 @@
         <%@include file = "scripts.html"%>
     
 </html>
-<%
-    if (request.getSession().getAttribute("codigo") == null || request.getSession().getAttribute("tipoSesion") != Paciente.NOMBRE_TABLA) {
-        request.getSession().invalidate();
-        response.sendRedirect("inicio-sesion.jsp");
-    }
-%>
 
