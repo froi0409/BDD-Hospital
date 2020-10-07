@@ -21,6 +21,7 @@ public class Resultado extends Entidad{
     public static final String CODIGO_LABORATORISTA = "codigo_laboratorista";
     public static final String CODIGO_PACIENTE = "codigo_paciente";
     public static final String CODIGO_EXAMEN = "codigo_examen";
+    public static final String CODIGO_CITA_LABORATORIO = "codigo_cita_laboratorio";
     
     private String codigo;
     private String fecha;
@@ -31,6 +32,7 @@ public class Resultado extends Entidad{
     private String codigoLaboratorista;
     private String codigoPaciente;
     private String codigoExamen;
+    private String codigoCitaLaboratorio;
 
     public String getCodigo() {
         return codigo;
@@ -102,6 +104,14 @@ public class Resultado extends Entidad{
 
     public void setCodigoExamen(String codigoExamen) {
         this.codigoExamen = codigoExamen;
+    }
+
+    public String getCodigoCitaLaboratorio() {
+        return codigoCitaLaboratorio;
+    }
+
+    public void setCodigoCitaLaboratorio(String codigoCitaLaboratorio) {
+        this.codigoCitaLaboratorio = codigoCitaLaboratorio;
     }
     
 }

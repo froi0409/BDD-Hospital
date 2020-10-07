@@ -24,7 +24,7 @@ public class IngresoResultado extends Ingreso {
     @Override
     public boolean ingresoArchivo(Connection connection) {
         
-        String insert = "INSERT INTO " + Resultado.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?)";
+        String insert = "INSERT INTO " + Resultado.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
         
         try (PreparedStatement preSt = connection.prepareStatement(insert)) {
             
@@ -37,6 +37,7 @@ public class IngresoResultado extends Ingreso {
             preSt.setString(7, resultado.getCodigoLaboratorista());
             preSt.setString(8, resultado.getCodigoPaciente());
             preSt.setString(9, resultado.getCodigoExamen());
+            preSt.setString(10, null);
             
             preSt.executeUpdate();
             

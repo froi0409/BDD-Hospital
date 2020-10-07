@@ -63,7 +63,7 @@ public class ConfirmarExamenLaboratorio extends HttpServlet {
         
         System.out.println("Examen: " + codigoExamen + "\nPaciente: " + codigoPaciente);
         
-        if (examen.requiereOrden(Conexion.getConnection(), nombreExamen) && orden.pacienteOrden(Conexion.getConnection(), codigoPaciente, codigoExamen)) {
+        if (examen.requiereOrden(Conexion.getConnection(), nombreExamen) && orden.pacienteOrden(Conexion.getConnection(), codigoPaciente, codigoExamen)) { //Condición que determina si el examen requiere de orden
             
             IngresoCitaLaboratorio ingresador = new IngresoCitaLaboratorio(cita);
             
@@ -73,6 +73,13 @@ public class ConfirmarExamenLaboratorio extends HttpServlet {
             request.setAttribute("mensaje", "Cita de Laboratorio agendada con éxito");
             request.getRequestDispatcher("inicio-paciente.jsp").forward(request, response);
             
+        } else if (!examen.requiereOrden(Conexion.getConnection(), nombreExamen)) { //Condición que determina si el examen simplemente no requiere de orden 
+            
+            IngresoCitaLaboratorio ingresador = new IngresoCitaLaboratorio(cita);
+            ingresador.ingresoNormal(Conexion.getConnection());
+            
+            request.setAttribute("mensaje", "Cita de Laboratorio agendada con éxito");
+            request.getRequestDispatcher("inicio-paciente.jsp").forward(request, response);
         } else if (examen.requiereOrden(Conexion.getConnection(), nombreExamen)) {
             
             request.setAttribute("mensaje", "Error al generar cita, el éxamen necesita de una orden médica para ser agendado");
