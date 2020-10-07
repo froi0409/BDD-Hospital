@@ -90,4 +90,28 @@ public class BusquedaExamen {
         
     }
     
+    public double costo (Connection connection, String codigoExamen) {
+        
+        String query = "SELECT " + Examen.COSTO + " FROM " + Examen.NOMBRE_TABLA + " WHERE " + Examen.CODIGO + " = ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoExamen);
+            
+            ResultSet result = preSt.executeQuery();
+            
+            //Determinamos si hay algún valor
+            if (result.next()) {
+                return result.getDouble(1);
+            } else {
+                return 0.00;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error Costo Examen: " + e.getMessage());
+            return 0.00;
+        }
+        
+    }
+    
 }

@@ -11,6 +11,16 @@ package entidades;
  */
 public class CitaLaboratorio extends Entidad{
     
+    public static final String NOMBRE_TABLA = "CITA_LABORATORIO";
+    public static final String CODIGO = "codigo";
+    public static final String FECHA = "fecha";
+    public static final String HORA = "hora";
+    public static final String COSTO = "costo";
+    public static final String CODIGO_MEDICO = "codigo_medico";
+    public static final String CODIGO_PACIENTE = "codigo_paciente";
+    public static final String CODIGO_EXAMEN = "codigo_examen";
+    public static final String CODIGO_ORDEN = "codigo_orden";
+    
     private String codigo;
     private String fecha;
     private String hora;
@@ -18,6 +28,7 @@ public class CitaLaboratorio extends Entidad{
     private String codigoMedico;
     private String codigoPaciente;
     private String codigoExamen;
+    private String codigoOrden;
 
     public String getCodigo() {
         return codigo;
@@ -73,6 +84,14 @@ public class CitaLaboratorio extends Entidad{
 
     public void setCodigoExamen(String codigoExamen) {
         this.codigoExamen = codigoExamen;
+    }
+
+    public String getCodigoOrden() {
+        return codigoOrden;
+    }
+
+    public void setCodigoOrden(String codigoOrden) {
+        this.codigoOrden = codigoOrden;
     }
     
 }
