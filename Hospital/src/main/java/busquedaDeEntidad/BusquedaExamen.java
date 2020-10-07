@@ -17,6 +17,11 @@ import java.util.ArrayList;
  */
 public class BusquedaExamen {
     
+    /**
+     * Metodo que sirve para obtener todos los examenes de labotaorio regitrados en a base de datos
+     * @param connection Conexión de la base de datos
+     * @return Retorna un ArrayList tipo String que contiene el nombre de todos los examenes de laboratorio que están registrados
+     */
     public ArrayList<String> all(Connection connection) {
         
         String query = "SELECT nombre FROM " + Examen.NOMBRE_TABLA;

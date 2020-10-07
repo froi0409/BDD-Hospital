@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="entidades.Medico"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,21 @@
         <%@include file="medico-cabecera.html"%>
         <%@include file="medico-barra-herramientas.html"%>
         
-        
-        
+        <c:choose>
+
+            <c:when test="${not empty mensaje}">
+
+                <div class="container" style="margin-top: 30px">
+                    <div class="alert alert-info" role="alert" align="center">
+                        ${mensaje}
+                    </div>
+                </div>
+
+            </c:when>
+            <c:otherwise>
+
+            </c:otherwise>
+        </c:choose>
         
         <%@include file="scripts.html"%>
     </body>

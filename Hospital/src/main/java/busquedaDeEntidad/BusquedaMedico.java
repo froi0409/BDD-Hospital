@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -54,6 +55,33 @@ public class BusquedaMedico {
         } catch (Exception e) {
             System.out.println("Error disponibilidad medico: " + e.getMessage());
             return false;
+        }
+        
+    }
+    
+    public ArrayList<String> horarioMedico(Connection connection, String codigoMedico) {
+        
+        String query = "SELEC " + Medico.HORARIO_INICIO + "," + Medico.HORARIO_FIN + " FROM " + Medico.NOMBRE_TABLA + " WHERE " + Medico.CODIGO + " = ?";
+        ArrayList<String> lista = new ArrayList<String>();
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoMedico);
+            
+            ResultSet result = preSt.executeQuery();
+            if(result.next()) {
+                
+                
+                
+                return lista;
+                
+            } else {
+                return null;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error Horario Medico: " + e.getMessage());
+            return null;
         }
         
     }

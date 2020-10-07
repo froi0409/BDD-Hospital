@@ -5,6 +5,8 @@
  */
 package servletsAnalizadores;
 
+import analizadores.Conexion;
+import busquedaDeEntidad.BusquedaPaciente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,11 +34,24 @@ public class GenerarOrden extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        BusquedaPaciente paciente = new BusquedaPaciente();
         
-        request.getSession().setAttribute("codigoPaciente", request.getParameter("codigoPaciente"));
-        request.getSession().setAttribute("nombreExamen", request.getParameter("nombreExamen"));
+        String codigoPaciente = request.getParameter("codigoPaciente");
+        String nombreExamen = request.getParameter("nombreExamen");
         
-        request.getRequestDispatcher("medico-generar-cita").forward(request, response);
+        if (paciente.exists(Conexion.getConnection(), codigoPaciente)) {
+            
+            request.getSession().setAttribute("codigoPaciente", codigoPaciente);
+            request.getSession().setAttribute("nombreExamen", nombreExamen);
+            request.getRequestDispatcher("medico-generar-cita.jsp").forward(request, response);
+
+        } else {
+            
+            request.setAttribute("mensaje", "Error al tratar de agendar la consulta, el paciente no existe en el sistema");
+            request.getRequestDispatcher("inicio-medico.jsp").forward(request, response);
+            
+        }
+        
         
     }
 

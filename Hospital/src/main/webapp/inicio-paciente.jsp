@@ -20,21 +20,21 @@
         
         <%@include file = "paciente-barra-herramientas.html"%>
         
-    <c:choose>
-        
-        <c:when test="${not empty mensaje}">
-            
-            <div class="container" style="margin-top: 30px">
-                <div class="alert alert-info" role="alert" align="center">
-                    ${mensaje}
+        <c:choose>
+
+            <c:when test="${not empty mensaje}">
+
+                <div class="container" style="margin-top: 30px">
+                    <div class="alert alert-info" role="alert" align="center">
+                        ${mensaje}
+                    </div>
                 </div>
-            </div>
-            
-        </c:when>
-        <c:otherwise>
-            
-        </c:otherwise>
-    </c:choose>
+
+            </c:when>
+            <c:otherwise>
+
+            </c:otherwise>
+        </c:choose>
         
         <%@include file = "scripts.html"%>
     </body>
