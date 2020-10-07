@@ -6,6 +6,7 @@
 package servletsAnalizadores;
 
 import analizadores.Conexion;
+import busquedaDeEntidad.BusquedaExamen;
 import busquedaDeEntidad.BusquedaPaciente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,15 +35,18 @@ public class GenerarOrden extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        BusquedaExamen examen = new BusquedaExamen();
         BusquedaPaciente paciente = new BusquedaPaciente();
         
         String codigoPaciente = request.getParameter("codigoPaciente");
-        String nombreExamen = request.getParameter("nombreExamen");
+        String codigoExamen = examen.codigoExamen(Conexion.getConnection(), request.getParameter("nombreExamen"));
+        String descripcion = request.getParameter("descripcion");
         
         if (paciente.exists(Conexion.getConnection(), codigoPaciente)) {
             
             request.getSession().setAttribute("codigoPaciente", codigoPaciente);
-            request.getSession().setAttribute("nombreExamen", nombreExamen);
+            request.getSession().setAttribute("codigoExamen", codigoExamen);
+            request.getSession().setAttribute("descripcion", descripcion);
             request.getRequestDispatcher("medico-generar-cita.jsp").forward(request, response);
 
         } else {

@@ -27,12 +27,9 @@
                             <h3>Agendar Cita</h3>
                         </div>
                         <div class="form-froup mx-sm-5 pt3">
-                            <label for="medico">Codigo del Paciente:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese Codigo del Paciente" name="codigoPaciente"/> 
-                            <br>
                             <!-- busca las especialidades -->
                             <label for="especialidad">Especialidad de la consulta:</label>
-                            <select name="especialidad" class="btn-block">
+                            <select name="nombreEspecialidad" class="btn-block">
                                 <%
                                     BusquedaEspecialidad find = new BusquedaEspecialidad();
 

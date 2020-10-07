@@ -44,4 +44,26 @@ public class BusquedaExamen {
         
     }
     
+    public String codigoExamen(Connection connection, String nombreExamen) throws NullPointerException {
+        
+        String query = "SELECT " + Examen.CODIGO + " FROM " + Examen.NOMBRE_TABLA + " WHERE " + Examen.NOMBRE + " = ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, nombreExamen);
+            
+            ResultSet result = preSt.executeQuery();
+            
+            if (result.next()) {
+                return result.getString(1);
+            } else {
+                return null;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error Buscar Codigo Examen: " + e.getMessage());
+            return null;
+        }
+    }
+    
 }
