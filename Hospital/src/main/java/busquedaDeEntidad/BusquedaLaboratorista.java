@@ -20,6 +20,12 @@ public class BusquedaLaboratorista {
     
     private String[] dias;
     
+    /**
+     * Determina si un laboratorista trabaja en el día actual
+     * @param connection Conexión de la base de datos 
+     * @param codigoLaboratorista Código del Laboratorista
+     * @return Retorna true si el laboratorista tiene turno de trabajo en el día en curso, de lo contrario retorna false
+     */
     public boolean trabajaHoy(Connection connection, String codigoLaboratorista) {
         
         Calendar calendario = Calendar.getInstance();
@@ -44,6 +50,24 @@ public class BusquedaLaboratorista {
             System.out.println("Error Trabaja Hoy: " + e.getMessage());
             return false;
         }
+    }
+    
+    public String getCodigoexamen(Connection connection, String codigoLaboratorista) {
+        
+        String query = "SELECT " + Laboratorista.CODIGO_EXAMEN + " FROM " + Laboratorista.NOMBRE_TABLA + " WHERE " + Laboratorista.CODIGO + " = ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoLaboratorista);
+            ResultSet result = preSt.executeQuery();
+            
+            return result.getString(1);
+            
+        } catch (Exception e) {
+            System.out.println("Error get Codigo Examen: " + e.getMessage());
+            return null;
+        }
+        
     }
     
 }

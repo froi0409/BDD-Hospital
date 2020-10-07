@@ -53,7 +53,7 @@ public class ArchivoDeEntrada {
             System.out.println(path); //Imprimimos en consola el path completo
             System.out.println(nombreArchivo);
          } catch (Exception ex) {
-             System.out.println("Fallo al crear el archivo en el servidor");
+             System.out.println("Fallo al crear el archivo en el servidor: " + ex.getMessage());
          }
     }
     

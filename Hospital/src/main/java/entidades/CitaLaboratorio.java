@@ -20,6 +20,7 @@ public class CitaLaboratorio extends Entidad{
     public static final String CODIGO_PACIENTE = "codigo_paciente";
     public static final String CODIGO_EXAMEN = "codigo_examen";
     public static final String CODIGO_ORDEN = "codigo_orden";
+    public static final String CODIGO_CITA_LABORATORIO = "codigo_cita_laboratorio";
     
     private String codigo;
     private String fecha;

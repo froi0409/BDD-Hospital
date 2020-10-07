@@ -52,7 +52,30 @@ public class IngresoResultado extends Ingreso {
 
     @Override
     public boolean ingresoNormal(Connection connection) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String insert = "INSERT INTO " + Resultado.NOMBRE_TABLA + " VALUES (?,?,?,?,?,?,?,?,?,?)";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(insert)) {
+            
+            preSt.setString(1, resultado.getCodigo());
+            preSt.setString(2, resultado.getFecha());
+            preSt.setString(3, resultado.getHora());
+            preSt.setString(4, resultado.getInforme());
+            preSt.setString(5, resultado.getOrden());
+            preSt.setString(6, resultado.getCodigoMedico());
+            preSt.setString(7, resultado.getCodigoLaboratorista());
+            preSt.setString(8, resultado.getCodigoPaciente());
+            preSt.setString(9, resultado.getCodigoExamen());
+            preSt.setString(10, resultado.getCodigoCitaLaboratorio());
+            
+            preSt.executeUpdate();
+            
+            return true;
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+        
     }
     
 }

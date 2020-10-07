@@ -73,4 +73,36 @@ public class BusquedaCitaLaboratorio {
         
     }
     
+    /**
+     * Obtiene un objeto de tipo CitaLaboratorio el cuál sirve para ingresar datos a un resultado de laboratorio
+     * @param connection Conexion de la base de datos
+     * @param codigoCitaLaboratorio Codigo de la cita de laboratorio de la cual nace el examen de laboratorio
+     * @return Objeto CitaLaboratorio
+     */
+    public CitaLaboratorio datosParaResultado(Connection connection, String codigoCitaLaboratorio){
+        CitaLaboratorio cita = new CitaLaboratorio();
+      
+        String query = "SELECT " + CitaLaboratorio.CODIGO_ORDEN + "," + CitaLaboratorio.CODIGO_PACIENTE + "," + CitaLaboratorio.CODIGO_EXAMEN + " FROM " + CitaLaboratorio.NOMBRE_TABLA + " WHERE " + CitaLaboratorio.CODIGO +" = ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            
+            preSt.setString(1, codigoCitaLaboratorio);
+            ResultSet result = preSt.executeQuery();
+            
+            result.next();
+            
+            cita.setCodigoOrden(result.getString(1));
+            cita.setCodigoPaciente(result.getString(2));
+            cita.setCodigoExamen(result.getString(3));
+                    
+            return cita;
+            
+        } catch (Exception e) {
+            System.out.println("Error DatosResultado: " + e.getMessage());
+            return null;
+        }
+        
+    }
+    
 }

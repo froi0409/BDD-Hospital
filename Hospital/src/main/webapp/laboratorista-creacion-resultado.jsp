@@ -4,9 +4,19 @@
     Author     : froi-pc
 --%>
 
+
+<%@page import="busquedaDeEntidad.BusquedaResultado"%>
+<%@page import="busquedaDeEntidad.BusquedaLaboratorista"%>
 <%@page import="analizadores.Conexion"%>
 <%@page import="busquedaDeEntidad.BusquedaCitaLaboratorio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+BusquedaLaboratorista laboratorista = new BusquedaLaboratorista();
+BusquedaResultado resultado = new BusquedaResultado();
+
+String codigoExamen = laboratorista.getCodigoexamen(Conexion.getConnection(), request.getSession().getAttribute("codigo").toString());
+String extension= resultado.extension(Conexion.getConnection(), codigoExamen);
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +28,7 @@
         <%@include file="laboratorista-cabecera.html" %>
         <%@include file="laboratorista-barra-herramientas.html" %>
         
-        <form action="RegistroReporte" method="POST">
+        <form action="RegistroReporte" method="POST" enctype="multipart/form-data">
             <div class="container"> 
                 <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-6 formulario">
@@ -26,7 +36,7 @@
                             <h3>Resultado</h3>
                         </div>
                         <div class="form-froup mx-sm-5 pt3">
-                            <label for="codigoPaciente">Codigo de la Cita :</label>
+                            <label for="codigoCita">Codigo de la Cita :</label>
                             <select name="codigoCita">
                                 <%
                                 BusquedaCitaLaboratorio find = new BusquedaCitaLaboratorio();
@@ -36,10 +46,9 @@
                                 %>
                             </select>
                             <br>
-                            <label for="descripcion">Descripción del informe:</label>
-                            <textarea name="descripcion" rows="5" class="form-control" required></textarea>
-                            <br>                            
-
+                            <label for="informe">Informe del Resultado:</label>
+                            <input type="file" class="btn-block" name="informe"/>
+                            <br>
                             <input type="submit" class="btn btn-info ingresar btn-block" value="Realizar Informe"/>
 
                         </div>
