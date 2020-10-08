@@ -100,7 +100,8 @@ public class ReportePaciente {
     public ArrayList<String[]> medicos(Connection connection, String orden) {
         
         ArrayList<String[]> lista = new ArrayList<String[]>();
-        String query = "SELECT M.codigo,M.nombre,D.nombre_especialidad,M.colegiado,M.correo,M.horario_inicio,M.horario_fin FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico ORDER BY ?";
+        String query = "SELECT M.codigo,M.nombre,D.nombre_especialidad,M.colegiado,M.correo,M.horario_inicio,M.horario_fin FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico ORDER BY ? DESC;";
+        
         
         try (PreparedStatement preSt = connection.prepareStatement(query)) {
             

@@ -23,10 +23,10 @@
                 <h1>Citas Médicas con Un Médico</h1><br>
                 <label for="orden">Seleccione una opción para ordenar</label>&nbsp;&nbsp;
                 <select name="orden">
-                    <option value="nombre">Nombre</option>
-                    <option value="nombre_especialidad">Especialidad</option>
+                    <option value="M.nombre">Nombre</option>
+                    <option value="D.nombre_especialidad">Especialidad</option>
                 </select><br>
-                <input type="submit" class="btn btn-success" value="Consultar"/><br>
+                <input type="submit" class="btn btn-info" value="Consultar"/><br><br>
                 <table class="table table-bordered">
                     <thead>
                         <tr class="table-info">
@@ -42,12 +42,9 @@
                     <tbody>
                         <%
                         String orden = request.getParameter("orden");
-                        
-                        System.out.println(orden);
-                        
                         ReportePaciente paciente = new ReportePaciente();
 
-                        for(String[] element: paciente.medicos(Conexion.getConnection(), orden)){
+                        for(String[] element: paciente.medicos(Conexion.getConnection(), request.getParameter("orden"))){
                             out.println("<tr>");
                             out.println("<td>" + element[0] + "</td>");
                             out.println("<td>" + element[1] + "</td>");
