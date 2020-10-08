@@ -57,3 +57,8 @@
         <%@include file = "scripts.html" %>
     </body>
 </html>
+<%
+request.getSession().removeAttribute("fechaInicial");
+request.getSession().removeAttribute("fechaFinal");
+request.getSession().removeAttribute("codigoMedico");
+%>

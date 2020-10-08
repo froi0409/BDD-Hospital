@@ -91,4 +91,43 @@ public class ReportePaciente {
         
     }
     
+    /**
+     * Obtiene los El código, especialidad, dpi, colegiado, correo electrónigo, horario de entrada y horario de salida de todos los médicos del hospital
+     * @param connection Conexión de la base de datos
+     * @param orden Columna por la cual se ordenaran los médicos
+     * @return ArrayList tipo String[] que contiene el código, especialidad, dpi, colegiado, correo electrónigo, horario de entrada y horario de salida de todos los médicos del hospital
+     */
+    public ArrayList<String[]> medicos(Connection connection, String orden) {
+        
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT M.codigo,M.nombre,D.nombre_especialidad,M.colegiado,M.correo,M.horario_inicio,M.horario_fin FROM MEDICO M INNER JOIN DESCRIPCION D ON M.codigo = D.codigo_medico ORDER BY ?";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, orden);
+            ResultSet result = preSt.executeQuery();
+            
+            while (result.next()) {
+                String[] datos = new String[8];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                datos[3] = result.getString(4);
+                datos[4] = result.getString(5);
+                datos[5] = result.getString(6);
+                datos[6] = result.getString(7);
+                
+                lista.add(datos);
+            }
+            
+            return lista;
+            
+        } catch (Exception e) {
+            System.out.println("Error Datos Médicos: " + e.getMessage());
+            return null;
+        }
+        
+    }
+    
 }

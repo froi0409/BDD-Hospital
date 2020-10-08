@@ -12,11 +12,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="links.html" %>
-        <title>Registrar Examen</title>
+        <title>Citas Médicas con Un Médico</title>
     </head>
     <body>
-        <%@include file="administrador-cabecera.html" %>
-        <%@include file="administrador-barra-herramientas.html" %>
+        <%@include file="paciente-cabecera.html" %>
+        <%@include file="paciente-barra-herramientas.html" %>
         
         <!-- Creamos la ventana de registro -->
         <form action="PacienteReporteUnMedico" method="POST">
