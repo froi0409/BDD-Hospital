@@ -16,6 +16,12 @@ import java.util.ArrayList;
  */
 public class ReporteMedico {
     
+    /**
+     * Obtiene las citas médicas del día que le corresponde atender a un método en específico
+     * @param connection Conexión de la base de datos
+     * @param codigoMedico Codigo del Médico
+     * @return ArrayList tipo String[] que contiene el codigo, especialidad, fecha y hora de la consulta, y el codigo y nombre de cada paciente a atender
+     */
     public ArrayList<String[]> citasHoy(Connection connection, String codigoMedico){
         
         ArrayList<String[]> lista = new ArrayList<String[]>();
@@ -46,6 +52,29 @@ public class ReporteMedico {
             return null;
         }
         
+    }
+    
+    public ArrayList<String[]> pacientesConMasInformes (Connection connection) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT P.nombre, COUNT(*) FROM INFORME I INNER JOIN PACIENTE P ON I.codigo_paciente = P.codigo GROUP BY P.nombre ORDER BY COUNT(*) DESC LIMIT 5";
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            ResultSet result = preSt.executeQuery();
+            
+            while (result.next()) {
+                String[] datos = new String[2];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+            
+                lista.add(datos);
+            }
+            
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Pacientes con Más Informes: " + e.getMessage());
+            return null;
+        }
     }
     
 }
