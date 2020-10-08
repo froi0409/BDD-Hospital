@@ -107,4 +107,32 @@ public class BusquedaMedico {
         
     }
     
+    /**
+     * Obtiene el Codigo y nombre de todos los médicos registrados en la base de datos
+     * @param connection Conexión de la Base de Datos
+     * @return ArrayList tipo String[] que contiene el código y nombre de cada uno de los médicos registrados en la base de datos
+     */
+    public ArrayList<String[]> all(Connection connection) {
+        
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT " + Medico.CODIGO + "," + Medico.NOMBRE + " FROM " + Medico.NOMBRE_TABLA;
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            ResultSet result = preSt.executeQuery();
+            while(result.next()) {
+                String[] datos = new String[2];
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                
+                lista.add(datos);
+            }
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Medico All: " + e.getMessage());
+            return null;
+        }
+        
+    }
+    
 }
