@@ -88,3 +88,4 @@ if(request.getSession().getAttribute("codigo") == null){
 }
 
 %>
+<%@include file = "paciente-seguridad.jsp" %>

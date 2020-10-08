@@ -14,8 +14,8 @@
         <title>Registrar Examen</title>
     </head>
     <body>
-        <%@include file="administrador-cabecera.html" %>
-        <%@include file="administrador-barra-herramientas.html" %>
+        <%@include file="paciente-cabecera.html" %>
+        <%@include file="paciente-barra-herramientas.html" %>
         
         <!-- Creamos la ventana de registro -->
         <form action="PacienteReporteTipoExamen" method="POST">
@@ -64,3 +64,4 @@
         <%@include file="scripts.html" %>
     </body>
 </html>
+<%@include file = "paciente-seguridad.jsp" %>

@@ -80,3 +80,4 @@
         <%@include file = "scripts.html" %>
     </body>
 </html>
+<%@include file = "paciente-seguridad.jsp" %>

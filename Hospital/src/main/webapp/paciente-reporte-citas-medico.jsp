@@ -62,3 +62,4 @@ request.getSession().removeAttribute("fechaInicial");
 request.getSession().removeAttribute("fechaFinal");
 request.getSession().removeAttribute("codigoMedico");
 %>
+<%@include file = "paciente-seguridad.jsp" %>
