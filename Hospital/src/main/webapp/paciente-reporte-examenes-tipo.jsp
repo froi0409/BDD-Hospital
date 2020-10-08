@@ -1,18 +1,18 @@
 <%-- 
-    Document   : paciente-reporte-ultimas-consultas
-    Created on : 7/10/2020, 18:52:12
+    Document   : paciente-reporte-examenes-tipo
+    Created on : 7/10/2020, 21:17:36
     Author     : froi-pc
 --%>
 
 <%@page import="analizadores.Conexion"%>
-<%@page import="reportes.ReportePaciente"%>
+<%@page import="reportes.ReportePacienteFechas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "links.html" %>
-        <title>Ultimas Citas Médicas</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <%@include file = "paciente-cabecera.html" %>
@@ -23,17 +23,26 @@
             <table class="table table-bordered">
                 <thead>
                     <tr class="table-info">
-                    <th scope="col">Código Consulta</th>
-                    <th scope="col">Nombre del Médico</th>
+                    <th scope="col">Código Examen</th>
+                    <th scope="col">Nombre del Examen</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                   </tr>
                 </thead>
                 <tbody>
                     <%
-                    ReportePaciente paciente = new ReportePaciente();
+                    String fechaInicial = request.getParameter("fechaInicial");
+                    String fechaFinal = request.getParameter("fechaFinal");
+                    String codigoExamen = request.getParameter("codigoExamen");
+                    String codigoPaciente = request.getParameter("codigoPaciente").toString();
+                    ReportePacienteFechas paciente = new ReportePacienteFechas(fechaInicial,fechaFinal);
                     
-                    for(String[] element: paciente.ultimasCitasMedicas(Conexion.getConnection(), session.getAttribute("codigo").toString())){
+                    System.out.println(request.getParameter("nombreExamen"));
+                    System.out.println(codigoExamen);
+                    System.out.println(fechaInicial);
+                    System.out.println(fechaFinal);
+                    
+                    for(String[] element: paciente.examenesDeUnTipo(Conexion.getConnection(), codigoPaciente, codigoExamen)){
                         out.println("<tr>");
                         out.println("<td>" + element[0] + "</td>");
                         out.println("<td>" + element[1] + "</td>");

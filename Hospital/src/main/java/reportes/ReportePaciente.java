@@ -54,6 +54,12 @@ public class ReportePaciente {
         
     }
     
+    /**
+     * Obtenemos las últimas 5 citas médicas que un paciente realizó
+     * @param connection Conexión de la base de datos
+     * @param codigoPaciente Código del paciente
+     * @return ArrayList de tipo String[] que contiene ek códico, fecha y hora de la consulta y el nómbre del médico que realizó la consulta
+     */
     public ArrayList<String[]> ultimasCitasMedicas (Connection connection, String codigoPaciente) {
         
         ArrayList<String[]> lista = new ArrayList<String[]>();
@@ -80,6 +86,7 @@ public class ReportePaciente {
             
         } catch (Exception e) {
             System.out.println("Error Reporte Ultimas Citas Médicas" + e.getMessage());
+            return null;
         }
         
     }
