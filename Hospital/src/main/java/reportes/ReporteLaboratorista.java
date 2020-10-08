@@ -88,4 +88,38 @@ public class ReporteLaboratorista {
         
     }
     
+    public ArrayList<String[]> diasConMasTrabajo(Connection connection, String codigoLaboratorista) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT codigo_examen FROM LABORATORISTA WHERE codigo = ?";
+        String query2 = "SELECT fecha,COUNT(*) FROM CITA_LABORATORIO WHERE codigo_examen = ? GROUP BY fecha ORDER BY COUNT(*) DESC LIMIT 10" +
+"";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query);
+                PreparedStatement preSt2 = connection.prepareStatement(query2)) {
+            
+            preSt.setString(1, codigoLaboratorista);
+            ResultSet result = preSt.executeQuery();
+            result.next(); //Obtenemos el codigo de examen de laboratorio que realiza el laboratorista
+            
+            String codigoExamen = result.getString(1);
+            
+            preSt2.setString(1, codigoExamen);
+            ResultSet result2 = preSt2.executeQuery(); 
+            
+            while(result2.next()) { //Obtenemos los datos de los examenes que se realizan ese día
+                String[] datos = new String[2];
+                
+                datos[0] = result2.getString(1);
+                datos[1] = result2.getString(2);
+                
+                lista.add(datos);
+            }
+            
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Examenes a Realizar: " + e.getMessage());
+            return null;
+        }
+    }
+    
 }

@@ -37,8 +37,8 @@
 
             </div>
 
-
         </div>
+        <%@include file="inicio-barra-herramientas.html" %>
 
         <%@include file = "scripts.html"%>
     </body>

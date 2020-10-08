@@ -37,11 +37,13 @@
 
         </div>
         
+        <%@include file="inicio-barra-herramientas.html" %>
+        
         <!-- Creamos botón de regreso -->
         <div class="container">
             
             <form action="inicio.jsp" method="POST">
-                <input type="submit" class="btn btn-outline-info" value="Regresar" />
+                <input type="submit" class="btn btn-outline-info" style="margin-top: 50px" value="Regresar" />
             </form>
             
         </div>
@@ -83,7 +85,7 @@
         <!-- Creamos la ventana del login -->
         <form action="AnalizadorDatosLogin" method="POST">
             <div class="container"> 
-                <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
+                <div class="row justify-content-center pt-2 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-4 formulario">
                         <div class="form-group text-center pt-3">
                             <h1>Iniciar Sesión</h1>
