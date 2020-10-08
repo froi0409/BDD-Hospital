@@ -13,8 +13,8 @@
         <title>Citas Agendadas</title>
     </head>
     <body>
-        <%@include file="administrador-cabecera.html" %>
-        <%@include file="administrador-barra-herramientas.html" %>
+        <%@include file="medico-cabecera.html" %>
+        <%@include file="medico-barra-herramientas.html" %>
         
         <!-- Creamos la ventana de registro -->
         <form action="MedicoReporteCitasAgendadas" method="POST">

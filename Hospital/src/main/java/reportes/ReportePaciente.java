@@ -131,4 +131,71 @@ public class ReportePaciente {
         
     }
     
+    /**
+     * Obtiene el codigo, fecha, nombre y especialidad de todas las citas médicas de un paciente
+     * @param connection Conexión de la base de datos
+     * @param codigoPaciente Codigo del paciente
+     * @return ArrayList de tipo String[] que contiene el codigo, fecha y el nombre de la especialidad de cata cita en la que ha participado un paciente
+     */
+    public ArrayList<String[]> historialCitaMedica(Connection connection, String codigoPaciente) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT codigo,fecha,nombre_especialidad FROM CITA_MEDICA WHERE codigo_paciente = ? AND (fecha < DATE(NOW()) OR (fecha = DATE(NOW()) AND hora < NOW()))";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoPaciente);
+            ResultSet result = preSt.executeQuery();
+            
+            while(result.next()) {
+                String[] datos = new String[3];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                
+                lista.add(datos);
+            }
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Historial Cita Medica: " + e.getMessage());
+            return null;
+        }
+        
+    }
+
+    /**
+     * Obtiene el codigo, fecha de la cita de laboratorio y el codigo y nombre del exámen de laboratorio
+     * @param connection Conexión de la base de datos
+     * @param codigoPaciente Codigo del paciente
+     * @return ArrayList de tipo String[] en el que se almacene el codigo, fecha de la cita de laboratorio y el codigo y nombre del exámen de laboratorio de cada cita
+     * en la que ha partiipado el paciente
+     */
+    public ArrayList<String[]> historialCitaLaboratorio(Connection connection, String codigoPaciente) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT C.codigo,C.fecha,E.codigo,E.nombre FROM CITA_LABORATORIO C INNER JOIN EXAMEN E ON C.codigo_examen = E.codigo WHERE C.codigo_paciente = ? AND (C.fecha < DATE(NOW()) OR (C.fecha = DATE(NOW()) AND C.hora < NOW()))";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, codigoPaciente);
+            ResultSet result = preSt.executeQuery();
+            
+            while (result.next()) {
+                String[] datos = new String[4];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                datos[3] = result.getString(4);
+                
+                lista.add(datos);
+            }
+            
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Historial Cita Laboratorio: " + e.getMessage());
+            return null;
+        }
+        
+    }
+    
 }

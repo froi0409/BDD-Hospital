@@ -21,9 +21,8 @@
         <%@include file="laboratorista-barra-herramientas.html" %>
         
         <%
-        
-        BusquedaLaboratorista laboratorista = new BusquedaLaboratorista();
-        if(!laboratorista.trabajaHoy(Conexion.getConnection(), session.getAttribute("codigo").toString())){
+            BusquedaLaboratorista laboratorista = new BusquedaLaboratorista();
+            if(!laboratorista.trabajaHoy(Conexion.getConnection(), session.getAttribute("codigo").toString())){
         %>
         
         <div class="container" style="margin-top: 30px">
@@ -33,10 +32,13 @@
         </div>
         
         <%
-        } 
+            } else {
         %>
         
         
+        <%
+            }
+        %>
         <%@include file="scripts.html" %>
     </body>
 </html>

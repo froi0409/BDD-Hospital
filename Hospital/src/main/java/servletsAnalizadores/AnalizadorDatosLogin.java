@@ -52,9 +52,6 @@ public class AnalizadorDatosLogin extends HttpServlet {
                 request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
             }
             
-            
-            
-            
         } else if (analizador.inicioSesion(usuario, password, tabla, Conexion.getConnection())) {
             
             request.getSession().setAttribute("codigo", usuario);

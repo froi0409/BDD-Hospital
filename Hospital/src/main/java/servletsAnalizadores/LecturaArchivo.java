@@ -40,6 +40,7 @@ public class LecturaArchivo extends HttpServlet {
        
         LectorXml lectxml = new LectorXml();
         lectxml.read(path);
+        request.setAttribute("mensaje", "Archivo subido con éxito");
         request.getRequestDispatcher("inicio-sesion.jsp").forward(request, response);
        
     }

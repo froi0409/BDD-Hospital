@@ -16,8 +16,8 @@
         <title>Citas Agendadas</title>
     </head>
     <body>
-        <%@include file = "paciente-cabecera.html" %>
-        <%@include file = "paciente-barra-herramientas.html" %>
+        <%@include file = "medico-cabecera.html" %>
+        <%@include file = "medico-barra-herramientas.html" %>
         
         <div class="container" align="center" style="margin-top: 100px">
             <h1>Cita Agendadas</h1>
