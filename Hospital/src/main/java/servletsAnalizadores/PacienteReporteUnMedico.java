@@ -5,8 +5,6 @@
  */
 package servletsAnalizadores;
 
-import analizadores.Conexion;
-import busquedaDeEntidad.BusquedaExamen;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author froi-pc
  */
-@WebServlet(name = "PacienteReporteTipoExamen", urlPatterns = {"/PacienteReporteTipoExamen"})
-public class PacienteReporteTipoExamen extends HttpServlet {
+@WebServlet(name = "PacienteReporteUnMedico", urlPatterns = {"/PacienteReporteUnMedico"})
+public class PacienteReporteUnMedico extends HttpServlet {
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -34,20 +32,19 @@ public class PacienteReporteTipoExamen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        BusquedaExamen examenB = new BusquedaExamen();
-        
-        //Declaramos las variables
-        String codigoExamen = examenB.codigoExamen(Conexion.getConnection(), request.getParameter("nombreExamen"));
+        String codigoMedico = request.getParameter("codigoMedico");
         String fechaInicial = request.getParameter("fechaInicial");
         String fechaFinal = request.getParameter("fechaFinal");
-        String codigoPaciente = request.getSession().getAttribute("codigo").toString();
         
-        //Pasammos los parámetros
-        request.getSession().setAttribute("codigoExamen", codigoExamen);
+        System.out.println(codigoMedico);
+        System.out.println(fechaInicial);
+        System.out.println(fechaFinal);
+        
+        request.getSession().setAttribute("codigoMedico", codigoMedico);
         request.getSession().setAttribute("fechaInicial", fechaInicial);
         request.getSession().setAttribute("fechaFinal", fechaFinal);
-        request.getSession().setAttribute("codigoPaciente", codigoPaciente);
-        request.getRequestDispatcher("paciente-reporte-examenes-tipo.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("paciente-reporte-citas-medico.jsp").forward(request, response);
         
     }
 

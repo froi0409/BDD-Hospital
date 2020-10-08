@@ -1,6 +1,6 @@
 <%-- 
-    Document   : paciente-reporte-examenes-tipo
-    Created on : 7/10/2020, 21:17:36
+    Document   : paciente-reporte-citas-medico
+    Created on : 7/10/2020, 23:09:15
     Author     : froi-pc
 --%>
 
@@ -12,19 +12,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "links.html" %>
-        <title>Examenes de Laboratorio de Un Tipo</title>
+        <title>Citas Médicas con Un Médico</title>
     </head>
     <body>
         <%@include file = "paciente-cabecera.html" %>
         <%@include file = "paciente-barra-herramientas.html" %>
         
         <div class="container" align="center" style="margin-top: 100px">
-            <h1>Examenes de Laboratorio de Un Tipo</h1>
+            <h1>Citas Médicas con Un Médico</h1>
             <table class="table table-bordered">
                 <thead>
                     <tr class="table-info">
-                    <th scope="col">Código Examen</th>
-                    <th scope="col">Nombre del Examen</th>
+                    <th scope="col">Código de Médico</th>
+                    <th scope="col">Nombre del Médico</th>
+                    <th scope="col">Código de la Cita</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                   </tr>
@@ -33,17 +34,18 @@
                     <%
                     String fechaInicial = request.getSession().getAttribute("fechaInicial").toString();
                     String fechaFinal = request.getSession().getAttribute("fechaFinal").toString();
-                    String codigoExamen = request.getSession().getAttribute("codigoExamen").toString();
-                    String codigoPaciente = request.getSession().getAttribute("codigoPaciente").toString();
+                    String codigoMedico = request.getSession().getAttribute("codigoMedico").toString();
+                    String codigoPaciente = request.getSession().getAttribute("codigo").toString();
                     
                     ReportePacienteFechas paciente = new ReportePacienteFechas(fechaInicial,fechaFinal);
                     
-                    for(String[] element: paciente.examenesDeUnTipo(Conexion.getConnection(), codigoPaciente, codigoExamen)){
+                    for(String[] element: paciente.citasConUnMedico(Conexion.getConnection(), codigoPaciente, codigoMedico)){
                         out.println("<tr>");
                         out.println("<td>" + element[0] + "</td>");
                         out.println("<td>" + element[1] + "</td>");
                         out.println("<td>" + element[2] + "</td>");
                         out.println("<td>" + element[3] + "</td>");
+                        out.println("<td>" + element[4] + "</td>");
                         out.println("</tr>");
                     }
                     %>
