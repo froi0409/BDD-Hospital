@@ -97,3 +97,4 @@
         <%@include file = "scripts.html"%>
     </body>
 </html>
+<%@include file="administrador-seguridad.jsp" %>

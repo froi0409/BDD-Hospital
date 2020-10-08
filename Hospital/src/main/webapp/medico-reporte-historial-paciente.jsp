@@ -1,6 +1,6 @@
 <%-- 
-    Document   : paciente-reporte-historial-medico
-    Created on : 8/10/2020, 04:04:34
+    Document   : medico-reporte-historial.paciente
+    Created on : 8/10/2020, 13:18:34
     Author     : froi-pc
 --%>
 
@@ -12,14 +12,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "links.html" %>
-        <title>Historial Médico</title>
+        <title>Historial Médico de Paciente</title>
     </head>
     <body>
-        <%@include file = "paciente-cabecera.html" %>
-        <%@include file = "paciente-barra-herramientas.html" %>
+        <%@include file = "medico-cabecera.html" %>
+        <%@include file = "medico-barra-herramientas.html" %>
         
         <div align="center" style="margin-top: 75px">
-            <h1>Historial Médico</h1>
+            <h1>Historial Médico de Paciente ${codigoPaciente}</h1>
         </div>
         <div class="container" align="center" style="margin-top: 100px">
             <h2>Citas Medicas</h2>
@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                     <%
-                    String codigoPaciente = request.getSession().getAttribute("codigo").toString();
+                    String codigoPaciente = request.getAttribute("codigoPaciente").toString();
                     
                     ReportePaciente paciente = new ReportePaciente();
                     
@@ -80,4 +80,4 @@
         <%@include file = "scripts.html" %>
     </body>
 </html>
-<%@include file = "paciente-seguridad.jsp" %>
+<%@include file = "medico-seguridad.jsp" %>

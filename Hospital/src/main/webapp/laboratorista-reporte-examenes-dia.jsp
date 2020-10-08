@@ -71,3 +71,5 @@
         <%@include file="scripts.html" %>
     </body>
 </html>
+<%@page import="entidades.Administrador"%>
+<%@include file="laboratorista-seguridad.jsp" %>

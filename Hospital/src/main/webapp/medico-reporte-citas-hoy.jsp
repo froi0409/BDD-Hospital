@@ -54,3 +54,4 @@
         <%@include file = "scripts.html" %>
     </body>
 </html>
+<%@include file = "medico-seguridad.jsp" %>

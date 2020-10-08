@@ -25,8 +25,11 @@
         
         <!-- Creamos la ventana de creación de cita -->
         <form action="ConfirmarCita" method="POST">
+            <div class="container" align="center" style="margin-top: 50px; margin-bottom: 50px;">
+                <a href="paciente-reporte-informacion-medicos.jsp" class="btn btn-outline-info">Ver Info de Medicos</a>
+            </div>
             <div class="container"> 
-                <div class="row justify-content-center pt-5 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
+                <div class="row justify-content-center pt-3 mt-5 mr-1"> <!-- Utilizamos el sistema de filas de bootstrap -->
                     <div class="col-md-4 formulario">
                         <div class="form-group text-center pt-3">
                             <h3>Agendar Cita</h3>
@@ -68,7 +71,7 @@
                                 
                             <br>
                             
-                            <input type="submit" class="btn btn-primary ingresar btn-block" value="Soilicitar"/>
+                            <input type="submit" class="btn btn-info ingresar btn-block" value="Soilicitar"/>
 
                         </div>
 
@@ -88,3 +91,4 @@ if(request.getSession().getAttribute("codigo") == null){
 }
 
 %>
+<%@include file = "paciente-seguridad.jsp" %>

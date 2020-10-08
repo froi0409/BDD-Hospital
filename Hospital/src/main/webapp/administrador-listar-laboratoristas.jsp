@@ -1,46 +1,42 @@
 <%-- 
-    Document   : medico-reporte-citas-agendadas
-    Created on : 8/10/2020, 01:33:24
+    Document   : administrador-listar-laboratoristas
+    Created on : 8/10/2020, 14:06:06
     Author     : froi-pc
 --%>
 
-<%@page import="reportes.ReporteMedicoFechas"%>
 <%@page import="analizadores.Conexion"%>
-<%@page import="reportes.ReportePacienteFechas"%>
+<%@page import="busquedaDeEntidad.BusquedaLaboratorista"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file = "links.html" %>
-        <title>Citas Agendadas</title>
+        <title>Listar Laboratoristas</title>
     </head>
     <body>
-        <%@include file = "medico-cabecera.html" %>
-        <%@include file = "medico-barra-herramientas.html" %>
+        <%@include file = "administrador-cabecera.html" %>
+        <%@include file = "administrador-barra-herramientas.html" %>
         
         <div class="container" align="center" style="margin-top: 100px">
-            <h1>Cita Agendadas</h1>
+            <h1>Laboratoristas</h1><br>
             <table class="table table-bordered">
                 <thead>
                     <tr class="table-info">
-                    <th scope="col">Codigo Cita</th>
-                    <th scope="col">Especialidad</th>
-                    <th scope="col">Codigo Paciente</th>
-                    <th scope="col">Nombre Paciente</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Hora</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Registro</th>
+                    <th scope="col">DPI</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Correo Electrónico</th>
+                    <th scope="col">Examen</th>
                   </tr>
                 </thead>
                 <tbody>
                     <%
-                    String fechaInicial = request.getAttribute("fechaInicial").toString();
-                    String fechaFinal = request.getAttribute("fechaFinal").toString();
-                    String codigoMedico = request.getSession().getAttribute("codigo").toString();
-                    
-                    ReporteMedicoFechas medico = new ReporteMedicoFechas(fechaInicial,fechaFinal);
-                    
-                    for(String[] element: medico.citasAgendadas(Conexion.getConnection(), codigoMedico)){
+                    BusquedaLaboratorista laboratorista = new BusquedaLaboratorista();
+
+                    for(String[] element: laboratorista.allAttributes(Conexion.getConnection())) {
                         out.println("<tr>");
                         out.println("<td>" + element[0] + "</td>");
                         out.println("<td>" + element[1] + "</td>");
@@ -48,15 +44,15 @@
                         out.println("<td>" + element[3] + "</td>");
                         out.println("<td>" + element[4] + "</td>");
                         out.println("<td>" + element[5] + "</td>");
+                        out.println("<td>" + element[6] + "</td>");
                         out.println("</tr>");
                     }
                     %>
                 </tbody>
             </table>
-
         </div>
-        
+
         <%@include file = "scripts.html" %>
     </body>
 </html>
-<%@include file = "medico-seguridad.jsp" %>
+<%@include file = "administrador-seguridad.jsp" %>

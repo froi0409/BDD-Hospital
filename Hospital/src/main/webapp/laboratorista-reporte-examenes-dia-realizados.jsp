@@ -71,3 +71,4 @@
         <%@include file="scripts.html" %>
     </body>
 </html>
+<%@include file="laboratorista-seguridad.jsp" %>

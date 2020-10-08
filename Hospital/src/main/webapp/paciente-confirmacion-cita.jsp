@@ -72,4 +72,4 @@
         <%@include file = "scripts.html"%>
     
 </html>
-
+<%@include file = "paciente-seguridad.jsp" %>
