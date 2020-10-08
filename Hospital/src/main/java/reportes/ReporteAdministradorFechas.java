@@ -59,4 +59,37 @@ public class ReporteAdministradorFechas {
         
     }
     
+    /**
+     * Obtiene información de los 5 médicos que tienen agendadas menos citas médicas en un intervalo de tiempo
+     * @param connection Conexión de la base de datos
+     * @return ArrayList de tipo String que contiene el codigo y nomere del médico, así como la cantidad de citas médicas que tiene agendadas
+     */
+    public ArrayList<String[]> medicosConMenosCitas(Connection connection) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT M.codigo,M.nombre,COUNT(*) FROM CITA_MEDICA C INNER JOIN MEDICO M ON M.codigo = C.codigo_medico WHERE C.fecha BETWEEN ? AND ? GROUP BY C.codigo_medico ORDER BY COUNT(*) ASC LIMIT 5";
+    
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, fechaInicial);
+            preSt.setString(2, fechaFinal);
+            
+            ResultSet result = preSt.executeQuery();
+            
+            while (result.next()) {
+                String[] datos = new String[3];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                
+                lista.add(datos);
+            }
+            
+            return lista;
+        } catch (Exception e) {
+            System.out.println("Error Medicos con Menos Citas Medicas: " + e.getMessage());
+            return null;
+        }
+    }
+    
 }
