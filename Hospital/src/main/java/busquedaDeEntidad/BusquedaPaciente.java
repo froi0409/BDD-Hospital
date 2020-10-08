@@ -78,4 +78,40 @@ public class BusquedaPaciente {
         }
     }
     
+    /**
+     * Obtiene los datos de todos los pacientes
+     * @param connection Conexión de la base de datos
+     * @return ArrayList tipo String[] que contiene los datos de todos los pacientes
+     */
+    public ArrayList<String[]> allAttributes (Connection connection) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT codigo,nombre,sexo,fecha_nacimiento,tipo_sangre,telefono,correo FROM PACIENTE";
+    
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            ResultSet result = preSt.executeQuery();
+            
+            while(result.next()) {
+                String[] datos = new String[7];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                datos[3] = result.getString(4);
+                datos[4] = result.getString(5);
+                datos[5] = result.getString(6);
+                datos[6] = result.getString(7);
+                
+                lista.add(datos);
+            }
+                    
+            return lista;
+            
+        } catch (Exception e) {
+            System.out.println("Error all: " + e.getMessage());
+            return null;
+        }
+    
+    }
+    
 }
