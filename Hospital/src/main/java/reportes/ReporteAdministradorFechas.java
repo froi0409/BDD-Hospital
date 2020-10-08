@@ -92,4 +92,40 @@ public class ReporteAdministradorFechas {
         }
     }
     
+    /**
+     * Obtiene la información de los exámenes de laboratorio más demandados en un intervalo de tiempo
+     * @param connection Conexion de la base de datos
+     * @return ArrayList de tipo String[] que contiene el código, el nómbre y la cantidad de exámenes demandados de cada tipo
+     * en el intervalo de tiempo determinado en el constructor de la clase
+     */
+    public ArrayList<String[]> examenesDemandados(Connection connection) {
+        ArrayList<String[]> lista = new ArrayList<String[]>();
+        String query = "SELECT E.codigo,E.nombre,COUNT(*) FROM CITA_LABORATORIO C INNER JOIN EXAMEN E ON C.codigo_examen = E.codigo WHERE C.fecha BETWEEN ? AND ? GROUP BY C.codigo_examen ORDER BY COUNT(*) DESC";
+        
+        try (PreparedStatement preSt = connection.prepareStatement(query)) {
+            
+            preSt.setString(1, fechaInicial);
+            preSt.setString(2, fechaFinal);
+            
+            ResultSet result = preSt.executeQuery();
+            
+            while (result.next()) {
+                String[] datos = new String[3];
+                
+                datos[0] = result.getString(1);
+                datos[1] = result.getString(2);
+                datos[2] = result.getString(3);
+                
+                lista.add(datos);
+            }
+            
+            return lista;
+            
+        } catch (Exception e) {
+            System.out.println("Error Examenes Demandados: " + e.getMessage());
+            return null;
+        }
+        
+    }
+    
 }
