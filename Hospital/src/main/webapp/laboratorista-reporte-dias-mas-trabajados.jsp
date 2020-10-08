@@ -15,8 +15,8 @@
         <title>Días con Más Trabajo</title>
     </head>
     <body>
-        <%@include file="administrador-cabecera.html" %>
-        <%@include file="administrador-barra-herramientas.html" %>
+        <%@include file="laboratorista-cabecera.html" %>
+        <%@include file="laboratorista-barra-herramientas.html" %>
         <div class="container" align="center" style="margin-top: 100px">
             <h1>Días con Más Trabajo</h1>
             <table class="table table-bordered">
